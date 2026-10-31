@@ -1,0 +1,88 @@
+{
+  "date": "2026-10-31",
+  "tool": "built-in image_gen.imagegen",
+  "mode": "generate",
+  "use": "Four original thematic Blackwall-inspired banners for DESTINY service categories. Generation per artwork; WebP conversion and responsive resizing only after generation.",
+  "artworks": [
+    {
+      "key": "blackwall-web-v12",
+      "prompt": "Use case: stylized-concept. Asset type: original premium wide artwork for a cybersecurity service banner, 16:9 landscape. Create an imposing, entirely original cyberspace architecture inspired by the ominous Blackwall mood of Cyberpunk 2077. An immense asymmetric stack of razor-cut obsidian slabs floats in a deep black void, seen from a low oblique angle; the slabs are stepped like the broken cross-section of a secure system. A narrow jagged crimson fissure cuts horizontally then descends diagonally through the structure, revealing red inner geometry in a single controlled breach. Main sculptural mass occupies the right two thirds, focal breach near 68 percent width and 50 percent height. Left 40 percent is quiet charcoal darkness with only faint receding planes, suitable for overlaying a large heading. Strong monumental silhouette, wide cinematic perspective, tactile black basalt and brushed graphite, precise bone-white edge reflections, occasional tiny red glass fragment, deep negative space, no city. This is security architecture, not a conventional fortress or door. Gallery quality AAA dark science fiction concept art, selective razor-sharp detail and restrained atmospheric haze. At least 65 percent near-black; palette charcoal #08090c, oxblood and crimson #ff2d47, tiny off-white highlights. No text, numbers, lettering, UI, frame, logos or watermark. No people, faces, robot, skull, padlock, shield, yellow or purple. The important form must remain visible when cropped to a shallow horizontal banner centered vertically. Single image, no collage, no panels.",
+      "assets": [
+        {
+          "path": "assets/visuals/blackwall-web-v12.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 129028,
+          "quality": 84
+        },
+        {
+          "path": "assets/visuals/blackwall-web-v12-small.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 41738,
+          "quality": 84
+        }
+      ]
+    },
+    {
+      "key": "blackwall-api-v12",
+      "prompt": "Use case: stylized-concept. Asset type: original premium wide artwork for an API cybersecurity website service banner, 16:9 landscape. An original impossible network suspended in a dark cyberspace void. Three thin, dislocated black-glass geometric gates stand at different depths in the right two thirds; they are open rectangular angular frames, dramatically offset and rotated in perspective, never rings. Hundreds of precise crimson optical filaments are pulled taut between selected slots in the gates, branching in a carefully tensioned structure. One luminous filament crosses an unexpected boundary and becomes a bright red diagonal line; the other connections stay dim. This image is about routes and trust between separate systems, expressed as physical sculptural art, never a literal diagram. Camera above and at a steep diagonal, with floating black planes underneath and empty space between the gateways. Leftmost 40 percent stays almost black with subtle diffuse geometry, usable for a text overlay. Focal point around 70 percent width, mid-height; strong angular-to-linear contrast, elegant sparse composition, visually distinct from a portal, fortress, sphere or swirling neural knot. Premium AAA dark sci-fi concept art inspired by the Blackwall atmosphere of Cyberpunk 2077, precise materials, macro detail, cinematic depth. More than 65 percent deep charcoal #08090c; oxblood shadows, crimson #ff2d47 threads, minuscule cool off-white edge reflections. No text, numbers, UI, logos, watermark, frame, human, character, face, shield, lock, robot, city, yellow, purple. Important geometry stays within the central horizontal band for shallow banner cropping. Single image, no collage or panels.",
+      "assets": [
+        {
+          "path": "assets/visuals/blackwall-api-v12.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 88020,
+          "quality": 84
+        },
+        {
+          "path": "assets/visuals/blackwall-api-v12-small.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 27638,
+          "quality": 84
+        }
+      ]
+    },
+    {
+      "key": "blackwall-ai-v12",
+      "prompt": "Use case: stylized-concept. Asset type: original premium wide art for AI security service banner, 16:9 landscape. Render an uncanny rogue artificial intelligence beyond an almost invisible black boundary, inspired by the oppressive Blackwall cyberspace atmosphere of Cyberpunk 2077, but an original abstract entity. A turbulent spectral phenomenon floats in the right two thirds of a bottomless dark void: dense crimson neural ribbons and fragmented red luminous particles form a tall asymmetric hollow silhouette, with a deep black negative-space cavity at its core. It resembles thought becoming a dangerous storm, not a person, not a face, not an eye, not a skull, not a robot. Ribbon contours are sliced into a handful of displaced horizontal digital fragments; lower strands disperse into fragile filaments, upper form fans outward like an impossible electrical plume. A few near-white data sparks deep inside provide tiny focal points. Elegant vertical energy with lateral strands, a compelling memorable shape and believable volumetric depth. Main center of activity around 69 percent image width and mid-height. Leftmost 40 percent and image edges remain near-black and quiet for text. Museum-quality dark cinematic science-fiction key art, extremely selective fine detail, no cheesy stock tech background. Palette deep charcoal #08090c, oxblood, restrained luminous crimson #ff2d47; more than 60 percent dark negative space. No lettering, numbers, UI, logos, watermark, frame, people, woman, armor, generic security icons, yellow or purple. Keep the dominant silhouette legible in a wide shallow horizontal crop around the center. Single image, no collage, no panels.",
+      "assets": [
+        {
+          "path": "assets/visuals/blackwall-ai-v12.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 106690,
+          "quality": 84
+        },
+        {
+          "path": "assets/visuals/blackwall-ai-v12-small.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 33374,
+          "quality": 84
+        }
+      ]
+    },
+    {
+      "key": "blackwall-retest-v12",
+      "prompt": "Use case: stylized-concept. Asset type: original premium wide artwork for a security retest service banner, 16:9 landscape. Create a calm but ominous stabilized Blackwall-inspired digital boundary, entirely original futuristic architecture. Extreme close oblique view of two massive matte-black monolithic plates precisely brought back into alignment after a fracture. The repair is a very thin continuous crimson seam with several hard ninety-degree steps, running diagonally from lower center toward upper right. Small inset geometric pieces fit tightly into the plates, with faint red light contained below the surface instead of exploding outward. The surrounding geometry is orderly, controlled, beautifully machined obsidian and graphite, with one bone-white rim reflection. No storm, no portal, no doorway, no orb, no sparks shower. Suggest verified closure and restored isolation through precise fit and restrained light. The structured focal seam is centered at 68 percent width and mid-height; most of the left 45 percent is a quiet broad unlit plane that fades into charcoal black, available for a text overlay. Strong layered depth, subtle tactile surface texture, sophisticated minimal cinematic composition, premium AAA dark science-fiction concept art. At least 70 percent deep near-black #08090c; crimson #ff2d47 and oxblood accents, tiny off-white highlights. No text, letters, numbers, UI, logos, watermark, border, human, face, robot, shield, lock, yellow or purple. The repair seam must still read when cropped to the shallow central horizontal band for a card banner. Single image, no collage, no panels.",
+      "assets": [
+        {
+          "path": "assets/visuals/blackwall-retest-v12.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 114222,
+          "quality": 84
+        },
+        {
+          "path": "assets/visuals/blackwall-retest-v12-small.webp",
+          "width": 800,
+          "height": 450,
+          "bytes": 33282,
+          "quality": 84
+        }
+      ]
+    }
+  ]
+}

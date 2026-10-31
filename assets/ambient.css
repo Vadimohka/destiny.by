@@ -1,0 +1,30 @@
+/* Opt-in motion for artwork and editorial sections. Content is visible by default. */
+[data-ambient-banner]{position:relative;overflow:hidden;isolation:isolate}
+[data-ambient-banner]>picture{display:block;width:100%;height:100%}
+[data-ambient-banner]::after{content:'';position:absolute;inset:-28% 0 auto;height:24%;z-index:2;pointer-events:none;opacity:0;background:linear-gradient(180deg,transparent 86%,#ff536a0a 96%,#ffb7c333 99%,transparent 100%)}
+.ambient-enabled [data-ambient-banner]>picture{animation:ambient-drift var(--ambient-drift-duration,24s) ease-in-out infinite alternate;animation-delay:var(--ambient-phase,0s);animation-play-state:paused}
+.ambient-enabled [data-ambient-banner]::after{animation:ambient-scan var(--ambient-scan-duration,13s) linear infinite;animation-delay:var(--ambient-phase,0s);animation-play-state:paused}
+.ambient-enabled [data-ambient-banner].ambient-active>picture{animation-play-state:running;will-change:transform}
+.ambient-enabled [data-ambient-banner].ambient-active::after{animation-play-state:running}
+.ambient-enabled [data-ambient-banner].ambient-break img{animation:ambient-interference .34s steps(1,end) both}
+.ambient-enabled .ambient-enter{animation:ambient-arrive .62s cubic-bezier(.2,.7,.25,1) both;animation-delay:var(--ambient-reveal-delay,0ms)}
+.ambient-enter:focus-within{animation:none!important}
+[data-ambient-card]{isolation:isolate}
+[data-ambient-card]::before{content:'';position:absolute;left:14px;right:14px;top:-1px;height:1px;z-index:3;pointer-events:none;opacity:0;background:linear-gradient(90deg,transparent,#ffadb9,transparent);transform-origin:left}
+.ambient-enabled:not(.ambient-suspended) [data-ambient-card]:is(:hover,:focus-visible)::before{animation:ambient-edge .7s ease-out both}
+.ambient-suspended [data-ambient-banner]>picture,.ambient-suspended [data-ambient-banner]::after{animation-play-state:paused!important}
+
+@keyframes ambient-arrive{from{opacity:.5;transform:translate3d(0,14px,0)}to{opacity:1;transform:none}}
+@keyframes ambient-drift{from{transform:scale(1.025) translate3d(0,0,0)}to{transform:scale(1.045) translate3d(-.4%,-.2%,0)}}
+@keyframes ambient-scan{0%,8%{opacity:0;transform:translate3d(0,0,0)}18%{opacity:.52}64%{opacity:.52}86%,100%{opacity:0;transform:translate3d(0,580%,0)}}
+@keyframes ambient-interference{0%,100%{transform:none}22%{transform:translate3d(-2px,0,0)}48%{transform:translate3d(2px,0,0)}72%{transform:none}}
+@keyframes ambient-edge{0%{opacity:0;transform:translateX(0) scaleX(.25)}24%{opacity:.8}100%{opacity:0;transform:translateX(75%) scaleX(.25)}}
+
+@media(prefers-reduced-motion:reduce){
+  [data-ambient-banner]>picture,[data-ambient-banner] img,.ambient-enter{animation:none!important;transform:none!important;opacity:1!important}
+  [data-ambient-banner]::after,[data-ambient-card]::before{animation:none!important;opacity:0!important}
+}
+@media print{
+  [data-ambient-banner]>picture,[data-ambient-banner] img,.ambient-enter{animation:none!important;transform:none!important;opacity:1!important}
+  [data-ambient-banner]::after,[data-ambient-card]::before{display:none!important}
+}

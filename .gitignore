@@ -1,0 +1,13 @@
+# Local preview environment; not part of the published website.
+.openai/
+
+# Editor, operating-system and temporary runtime files.
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+node_modules/
+__pycache__/
+
+# Public artifact staged by the Pages workflow
+_site/

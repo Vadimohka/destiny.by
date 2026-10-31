@@ -1,0 +1,16 @@
+.home-service{--banner-pad-x:32px;--banner-pad-top:30px}
+.service-banner{position:relative;isolation:isolate;display:block;flex-shrink:0;height:152px;margin:calc(-1 * var(--banner-pad-top)) calc(-1 * var(--banner-pad-x)) 25px;overflow:hidden;background:#07090c;border-bottom:1px solid #432832}
+.service-banner img{display:block;width:100%;height:100%;max-width:none;object-fit:cover;object-position:70% 50%}
+.service-banner--web img{object-position:70% 54%}
+.service-banner--api img{object-position:72% 51%}
+.service-banner--ai img{object-position:70% 48%}
+.service-banner--retest img{object-position:68% 52%}
+.home-service:focus-visible{outline-offset:4px}
+.page-hero--web .page-hero-art img{object-position:68% 50%}
+.page-hero--api .page-hero-art img{object-position:69% 50%}
+.page-hero--ai .page-hero-art img{object-position:69% 48%}
+.page-hero--retest .page-hero-art img{object-position:67% 50%}
+@media screen and (max-width:1000px){.home-service{--banner-pad-x:27px;--banner-pad-top:27px}.service-banner{height:140px;margin-bottom:23px}}
+@media screen and (max-width:760px){.home-service{--banner-pad-x:23px;--banner-pad-top:23px}.service-banner{height:130px}.page-hero--web .page-hero-art img,.page-hero--api .page-hero-art img,.page-hero--ai .page-hero-art img,.page-hero--retest .page-hero-art img{object-position:65% 50%}}
+@media screen and (max-width:540px){.home-service{--banner-pad-x:25px;--banner-pad-top:25px}.service-banner{height:136px;margin-bottom:23px}}
+@media print{.service-banner{display:none}}

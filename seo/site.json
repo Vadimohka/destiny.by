@@ -1,0 +1,167 @@
+{
+  "origin": "https://destiny.by",
+  "name": "DESTINY",
+  "language": "ru",
+  "locale": "ru_RU",
+  "logo": {
+    "path": "assets/destiny-wordmark.svg",
+    "width": 707,
+    "height": 120
+  },
+  "socialImage": {
+    "path": "assets/social-card.png",
+    "width": 1200,
+    "height": 630,
+    "alt": "DESTINY — пентест Web, API и AI-систем. Найти брешь. До атаки."
+  },
+  "pages": [
+    {
+      "file": "index.html",
+      "path": "/",
+      "kind": "home",
+      "title": "Пентест Web, API и AI-систем — DESTINY",
+      "description": "Пентест веб-приложений, API и AI-систем. Проверка доступа и бизнес-логики, анализ RAG и агентов, отчёт с рекомендациями и ретест исправлений.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "index.md"
+    },
+    {
+      "file": "web-pentest.html",
+      "path": "/web-pentest.html",
+      "kind": "service",
+      "title": "Пентест веб-приложений — DESTINY",
+      "description": "Проверка безопасности веб-приложений, SaaS и личных кабинетов: вход, роли, доступ к данным и бизнес-логика. Отчёт с доказательствами и рекомендациями.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "web-pentest.md",
+      "serviceId": "web-service"
+    },
+    {
+      "file": "api-pentest.html",
+      "path": "/api-pentest.html",
+      "kind": "service",
+      "title": "Пентест API и интеграций — DESTINY",
+      "description": "Проверка безопасности API: доступ к объектам, защищённым полям и функциям, токены, интеграции и критичные операции. Рекомендации по исправлению.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "api-pentest.md",
+      "serviceId": "api-service"
+    },
+    {
+      "file": "ai-security.html",
+      "path": "/ai-security.html",
+      "kind": "service",
+      "title": "Безопасность AI, LLM, RAG и агентов — DESTINY",
+      "description": "Проверка безопасности AI-систем и LLM red teaming: внешние инструкции, доступ к RAG, полномочия агентов и использование ответов модели.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "ai-security.md",
+      "serviceId": "ai-service"
+    },
+    {
+      "file": "retest.html",
+      "path": "/retest.html",
+      "kind": "service",
+      "title": "Проверка релизов и ретест уязвимостей — DESTINY",
+      "description": "Проверка безопасности после релизов и повторная проверка исправлений. Подтверждение статуса находок, оценка изменений и рекомендации для команды.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "retest.md",
+      "serviceId": "release-service"
+    },
+    {
+      "file": "approach.html",
+      "path": "/approach.html",
+      "kind": "approach",
+      "title": "Как проходит пентест: этапы, доступы и результат — DESTINY",
+      "description": "Как организована проверка безопасности: подготовка, поиск и подтверждение уязвимостей, отчёт и ретест. Ответы на вопросы о доступах, сроках и стоимости.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "approach.md"
+    },
+    {
+      "file": "report-example.html",
+      "path": "/report-example.html",
+      "kind": "report",
+      "title": "Пример отчёта о пентесте Web/API и AI — DESTINY",
+      "description": "Пример отчёта о пентесте в PDF: сводка рисков, объём проверки, находки Web/API и AI, доказательства и рекомендации. Все сценарии и данные вымышлены.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "report-example.md",
+      "pdf": "assets/reports/destiny-pentest-report-example.pdf"
+    },
+    {
+      "file": "contact.html",
+      "path": "/contact.html",
+      "kind": "contact",
+      "title": "Обсудить пентест и безопасность AI — DESTINY",
+      "description": "Обсудите пентест Web, API, AI-систем или ретест исправлений. Свяжитесь с DESTINY через LinkedIn или электронную почту.",
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "contact.md"
+    },
+    {
+      "file": "privacy.html",
+      "path": "/privacy.html",
+      "kind": "privacy",
+      "title": "Данные и конфиденциальность — DESTINY",
+      "description": "Информация о контактах и конфиденциальности: переход в LinkedIn, обращение по электронной почте и данные, которые вы передаёте при переписке.",
+      "indexable": false,
+      "updated": "2026-10-31"
+    },
+    {
+      "file": "404.html",
+      "path": "/404.html",
+      "kind": "error",
+      "title": "Страница не найдена — DESTINY",
+      "description": "Вернитесь к услугам DESTINY: пентесту веб-приложений, API и AI-систем.",
+      "indexable": false
+    }
+  ],
+  "services": [
+    {
+      "id": "web-service",
+      "name": "Пентест веб-приложений",
+      "serviceType": "Web application penetration testing",
+      "file": "web-pentest.html",
+      "path": "/web-pentest.html"
+    },
+    {
+      "id": "api-service",
+      "name": "Пентест API и интеграций",
+      "serviceType": "API penetration testing",
+      "file": "api-pentest.html",
+      "path": "/api-pentest.html"
+    },
+    {
+      "id": "ai-service",
+      "name": "Проверка безопасности AI, LLM, RAG и агентов",
+      "serviceType": "AI security assessment and LLM red teaming",
+      "file": "ai-security.html",
+      "path": "/ai-security.html"
+    },
+    {
+      "id": "release-service",
+      "name": "Проверка релизов и ретест уязвимостей",
+      "serviceType": "Release security assessment and vulnerability retesting",
+      "file": "retest.html",
+      "path": "/retest.html"
+    }
+  ],
+  "searchBots": [
+    "OAI-SearchBot",
+    "Claude-SearchBot",
+    "PerplexityBot"
+  ],
+  "userFetchers": [
+    "ChatGPT-User",
+    "Claude-User",
+    "Perplexity-User"
+  ],
+  "email": "security@destiny.by",
+  "faq": {
+    "file": "approach.html",
+    "sectionId": "questions"
+  },
+  "linkedin": "https://www.linkedin.com/in/vadimohka/"
+}
