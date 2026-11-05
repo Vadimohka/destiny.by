@@ -26,6 +26,75 @@ BEGIN = "<!-- BEGIN GENERATED DISCOVERY -->"
 END = "<!-- END GENERATED DISCOVERY -->"
 VOID = set("area base br col embed hr img input link meta param source track wbr".split())
 OMIT = set("script style svg nav form button input select textarea label noscript template".split())
+LABELS = {
+    "ru": {
+        "catalog": "Услуги DESTINY", "faq": "Вопросы о пентесте",
+        "report": "Демонстрационный отчёт о пентесте Web/API и AI",
+        "pdf": "Пример отчёта в PDF", "source": "Источник", "updated": "Обновлено",
+        "contents": "Содержание", "representations": "Машиночитаемые представления",
+        "entities": "сущности сайта и услуг в Schema.org.", "fullText": "Полный текст",
+        "fullDescription": "текстовые версии услуг, подхода, контактов и демонстрационного отчёта.",
+        "html": "исходная HTML-страница.", "demoMarkers": ("вымышлен", "демонстрацион"),
+    },
+    "be": {
+        "catalog": "Паслугі DESTINY", "faq": "Пытанні пра пентэст",
+        "report": "Дэманстрацыйная справаздача пра пентэст Web/API і AI",
+        "pdf": "Прыклад справаздачы ў PDF (па-руску)", "source": "Крыніца", "updated": "Абноўлена",
+        "contents": "Змест", "representations": "Машыначытальныя прадстаўленні",
+        "entities": "сутнасці сайта і паслуг у Schema.org.", "fullText": "Поўны тэкст",
+        "fullDescription": "тэкставыя версіі паслуг, падыходу, кантактаў і дэманстрацыйнай справаздачы.",
+        "html": "зыходная HTML-старонка.", "demoMarkers": ("выдуман", "дэманстрац"),
+    },
+}
+
+
+def safe_public_path(value):
+    """Allow explicit nested public files without absolute paths or traversal."""
+    return (isinstance(value, str) and bool(value) and "\\" not in value
+            and not Path(value).is_absolute()
+            and all(part not in {"", ".", ".."} for part in value.split("/")))
+
+
+def load_configs():
+    """Load the primary site and locale overrides, retaining shared contact/assets."""
+    primary = json.loads((ROOT / "seo/site.json").read_text(encoding="utf-8"))
+    primary.setdefault("basePath", "/")
+    configs = [primary]
+    for filename in primary.get("localizations", []):
+        if not safe_public_path(filename) or not filename.startswith("seo/"):
+            raise ValueError("Localization configuration must be a relative file under seo/")
+        overrides = json.loads((ROOT / filename).read_text(encoding="utf-8"))
+        configs.append({**primary, **overrides})
+    languages = [config["language"] for config in configs]
+    if len(set(languages)) != len(languages) or any(lang not in LABELS for lang in languages):
+        raise ValueError("Locale languages must be unique and have generator labels")
+    page_keys = {Path(page["file"]).name for page in primary["pages"]}
+    for config in configs:
+        base = config["basePath"]
+        if (not base.startswith("/") or not base.endswith("/") or base.startswith("//")
+                or (base != "/" and not safe_public_path(base.strip("/")))):
+            raise ValueError("Locale basePath must be a local directory path")
+        if {Path(page["file"]).name for page in config["pages"]} != page_keys:
+            raise ValueError("Every locale must contain a counterpart for each primary page")
+    return configs
+
+
+def discovery_path(config, name):
+    return config.get("basePath", "/").lstrip("/") + name
+
+
+def page_variants(configs, page):
+    key = Path(page["file"]).name
+    return [(config["language"], page_url(config, candidate), config["locale"])
+            for config in configs for candidate in config["pages"]
+            if Path(candidate["file"]).name == key]
+
+
+def alternate_pages(configs, page):
+    if page["kind"] == "error":
+        return []
+    matches = page_variants(configs, page)
+    return matches + [("x-default", matches[0][1], None)]
 
 
 @dataclass
@@ -117,7 +186,8 @@ def robots_value(page):
 
 
 def source_facts(config, documents):
-    home = documents["index.html"].root
+    home_page = next(page for page in config["pages"] if page["kind"] == "home")
+    home = documents[home_page["file"]].root
     hero = plain(required(home.first(css_class="hero-description"), "Missing hero description"))
     services = []
     for item in config["services"]:
@@ -145,7 +215,8 @@ def source_facts(config, documents):
 
 
 def graphs(config, documents):
-    origin = config["origin"] + "/"
+    origin = absolute(config, config.get("basePath", "/"))
+    labels = LABELS[config["language"]]
     hero, services, faqs = source_facts(config, documents)
     org_id, site_id, logo_id = (origin + fragment for fragment in ("#organization", "#website", "#logo"))
     organization = {"@type": "Organization", "@id": org_id, "name": config["name"],
@@ -188,7 +259,7 @@ def graphs(config, documents):
             catalog_id = origin + "#service-catalog"
             webpage["mainEntity"] = ref(catalog_id)
             nodes.append({"@type": "OfferCatalog", "@id": catalog_id,
-                          "name": "Услуги DESTINY", "url": origin + "#services",
+                          "name": labels["catalog"], "url": origin + "#services",
                           "itemListElement": [{"@type": "Offer", "itemOffered": ref(service["@id"])}
                                               for service in service_nodes.values()]})
             nodes.extend(service_nodes.values())
@@ -212,7 +283,7 @@ def graphs(config, documents):
                 webpage["hasPart"] = ref(faq_id)
                 nodes.append({"@type": "FAQPage", "@id": faq_id,
                               "url": faq_url + "#" + config["faq"]["sectionId"],
-                              "name": "Вопросы о пентесте", "isPartOf": ref(webpage["@id"]),
+                              "name": labels["faq"], "isPartOf": ref(webpage["@id"]),
                               "inLanguage": config["language"], "mainEntity": [
                                   {"@type": "Question", "@id": faq_url + "#" + f["id"],
                                    "url": faq_url + "#" + f["id"], "name": f["question"],
@@ -225,19 +296,19 @@ def graphs(config, documents):
             elif page["kind"] == "report":
                 demo = plain(required(documents[page["file"]].root.first(css_class="doc-demo-note"),
                                       "Report must contain its visible demo notice"))
-                if not any(word in demo.lower() for word in ("вымышлен", "демонстрацион")):
+                if not any(word in demo.lower() for word in labels["demoMarkers"]):
                     raise ValueError("The example report must remain explicitly a demonstration")
                 report_id = url + "#report"
                 webpage["mainEntity"] = ref(report_id)
                 report = {"@type": "Report", "@id": report_id, "url": url,
-                          "name": "Демонстрационный отчёт о пентесте Web/API и AI",
+                          "name": labels["report"],
                           "description": demo, "inLanguage": config["language"],
                           "publisher": ref(org_id), "mainEntityOfPage": ref(webpage["@id"]),
                           "dateModified": page["updated"]}
                 if page.get("pdf"):
                     report["encoding"] = {"@type": "MediaObject", "encodingFormat": "application/pdf",
                                           "contentUrl": absolute(config, page["pdf"]),
-                                          "inLanguage": config["language"]}
+                                          "inLanguage": page.get("pdfLanguage", config["language"])}
                 nodes.append(report)
         result[page["file"]] = nodes
     return result
@@ -247,18 +318,24 @@ def json_text(value):
     return json.dumps(value, ensure_ascii=False, indent=2) + "\n"
 
 
-def generated_head(config, page, graph):
+def generated_head(config, page, graph, configs):
     esc = lambda value: html.escape(str(value), quote=True)
     tags = [BEGIN, f'<title>{esc(page["title"])}</title>',
             f'<meta name="description" content="{esc(page["description"])}">',
             f'<meta name="robots" content="{robots_value(page)}">']
     if page["kind"] != "error":
         tags.append(f'<link rel="canonical" href="{page_url(config, page)}">')
+    alternates = alternate_pages(configs, page)
+    tags.extend(f'<link rel="alternate" hreflang="{language}" href="{url}">'
+                for language, url, _ in alternates)
     meta = [("property", "og:type", "website"), ("property", "og:locale", config["locale"]),
             ("property", "og:site_name", config["name"]), ("property", "og:title", page["title"]),
             ("property", "og:description", page["description"])]
     if page["kind"] != "error":
         meta.append(("property", "og:url", page_url(config, page)))
+    meta.extend(("property", "og:locale:alternate", locale)
+                for language, _, locale in alternates
+                if language not in {config["language"], "x-default"})
     social = config["socialImage"]
     meta.extend([( "property", "og:image", absolute(config, social["path"])),
                  ("property", "og:image:type", "image/png"),
@@ -272,14 +349,14 @@ def generated_head(config, page, graph):
                  ("name", "twitter:image:alt", social["alt"])])
     tags.extend(f'<meta {attr}="{key}" content="{esc(value)}">' for attr, key, value in meta)
     tags.extend([
-        f'<link rel="describedby" href="{absolute(config, "llms.txt")}" type="text/plain">',
-        f'<link rel="describedby" href="{absolute(config, "ai.json")}" type="application/ld+json">',
+        f'<link rel="describedby" href="{absolute(config, discovery_path(config, "llms.txt"))}" type="text/plain">',
+        f'<link rel="describedby" href="{absolute(config, discovery_path(config, "ai.json"))}" type="application/ld+json">',
         f'<link rel="sitemap" href="{absolute(config, "sitemap.xml")}" type="application/xml">',
     ])
     if page.get("markdown"):
         tags.append(f'<link rel="alternate" href="{absolute(config, page["markdown"])}" type="text/markdown" title="{esc(page["title"])}">')
     if page.get("pdf"):
-        tags.append(f'<link rel="alternate" href="{absolute(config, page["pdf"])}" type="application/pdf" title="Пример отчёта в PDF">')
+        tags.append(f'<link rel="alternate" href="{absolute(config, page["pdf"])}" type="application/pdf" title="{esc(LABELS[config["language"]]["pdf"])}">')
     if graph:
         encoded = json_text({"@context": "https://schema.org", "@graph": graph}).rstrip().replace("<", "\\u003c")
         tags.extend(['<script type="application/ld+json">', encoded, '</script>'])
@@ -406,14 +483,15 @@ def markdown_page(config, page, document):
     value = re.sub(r"[ \t]+\n", "\n", value)
     value = re.sub(r"\n[ \t]+", "\n", value)
     value = re.sub(r"\n{3,}", "\n\n", value).strip()
-    return (f"# {page['title']}\n\nИсточник: [{url}]({url})\n\n"
-            f"Обновлено: {page['updated']}\n\n{value}\n")
+    labels = LABELS[config["language"]]
+    return (f"# {page['title']}\n\n{labels['source']}: [{url}]({url})\n\n"
+            f"{labels['updated']}: {page['updated']}\n\n{value}\n")
 
 
-def build(config, sources, documents):
+def build(config, sources, documents, configs):
     output, page_graphs = {}, graphs(config, documents)
     for page in config["pages"]:
-        output[page["file"]] = replace_head(sources[page["file"]], generated_head(config, page, page_graphs[page["file"]]))
+        output[page["file"]] = replace_head(sources[page["file"]], generated_head(config, page, page_graphs[page["file"]], configs))
         if page.get("markdown"):
             output[page["markdown"]] = markdown_page(config, page, documents[page["file"]])
     combined = {}
@@ -422,30 +500,48 @@ def build(config, sources, documents):
             if node["@id"] in combined and combined[node["@id"]] != node:
                 raise ValueError(f"Conflicting graph identity {node['@id']}")
             combined[node["@id"]] = node
-    output["ai.json"] = json_text({"@context": "https://schema.org", "@id": absolute(config, "ai.json"), "@graph": list(combined.values())})
+    ai_path = discovery_path(config, "ai.json")
+    output[ai_path] = json_text({"@context": "https://schema.org", "@id": absolute(config, ai_path), "@graph": list(combined.values())})
     hero, _, _ = source_facts(config, documents)
     mirrored = [p for p in config["pages"] if p.get("markdown")]
-    llms = [f"# {config['name']}", "", f"> {hero}", "", "## Содержание", ""]
+    labels = LABELS[config["language"]]
+    llms = [f"# {config['name']}", "", f"> {hero}", "", f"## {labels['contents']}", ""]
     for page in mirrored:
         llms.append(f"- [{page['title']}]({absolute(config, page['markdown'])}): {page['description']}")
-    llms += ["", "## Машиночитаемые представления", "",
-             f"- [JSON-LD]({absolute(config, 'ai.json')}): сущности сайта и услуг в Schema.org.",
-             f"- [Полный текст]({absolute(config, 'llms-full.txt')}): текстовые версии услуг, подхода, контактов и демонстрационного отчёта.",
+    llms += ["", f"## {labels['representations']}", "",
+             f"- [JSON-LD]({absolute(config, ai_path)}): {labels['entities']}",
+             f"- [{labels['fullText']}]({absolute(config, discovery_path(config, 'llms-full.txt'))}): {labels['fullDescription']}",
              "", "## Optional", ""]
-    llms += [f"- [{page['title']}]({page_url(config, page)}): исходная HTML-страница." for page in config["pages"] if page["kind"] != "error"]
-    output["llms.txt"] = "\n".join(llms) + "\n"
-    output["llms-full.txt"] = "\n\n---\n\n".join(output[p["markdown"]].rstrip() for p in mirrored) + "\n"
-    lines = ["User-agent: *", "Allow: /", ""]
-    for bot in config["searchBots"] + config["userFetchers"]:
-        lines += [f"User-agent: {bot}", "Allow: /", ""]
-    output["robots.txt"] = "\n".join(lines + [f"Sitemap: {absolute(config, 'sitemap.xml')}", ""])
-    entries = [f"  <url>\n    <loc>{html.escape(page_url(config, page))}</loc>\n    <lastmod>{page['updated']}</lastmod>\n  </url>"
-               for page in config["pages"] if page["indexable"]]
-    output["sitemap.xml"] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + "\n".join(entries) + "\n</urlset>\n"
+    llms += [f"- [{page['title']}]({page_url(config, page)}): {labels['html']}" for page in config["pages"] if page["kind"] != "error"]
+    output[discovery_path(config, "llms.txt")] = "\n".join(llms) + "\n"
+    output[discovery_path(config, "llms-full.txt")] = "\n\n---\n\n".join(output[p["markdown"]].rstrip() for p in mirrored) + "\n"
     return output, page_graphs
 
 
-def validate(config, outputs, page_graphs):
+def shared_discovery(configs):
+    config = configs[0]
+    lines = ["User-agent: *", "Allow: /", ""]
+    for bot in config["searchBots"] + config["userFetchers"]:
+        lines += [f"User-agent: {bot}", "Allow: /", ""]
+    output = {"robots.txt": "\n".join(lines + [f"Sitemap: {absolute(config, 'sitemap.xml')}", ""])}
+    entries = []
+    for config in configs:
+        for page in config["pages"]:
+            if not page["indexable"]:
+                continue
+            entry = ["  <url>", f"    <loc>{html.escape(page_url(config, page))}</loc>",
+                     f"    <lastmod>{page['updated']}</lastmod>"]
+            entry.extend(f'    <xhtml:link rel="alternate" hreflang="{language}" href="{html.escape(url, quote=True)}" />'
+                         for language, url, _ in alternate_pages(configs, page))
+            entries.append("\n".join(entry + ["  </url>"]))
+    output["sitemap.xml"] = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+                             '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
+                             'xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
+                             + "\n".join(entries) + "\n</urlset>\n")
+    return output
+
+
+def validate(config, outputs, page_graphs, configs):
     errors = []
     origin = urlsplit(config["origin"])
     if origin.scheme != "https" or not origin.netloc or origin.path or origin.query or origin.fragment:
@@ -456,10 +552,15 @@ def validate(config, outputs, page_graphs):
     if len({page["path"] for page in config["pages"]}) != len(config["pages"]):
         errors.append("Configured canonical paths must be unique")
     for page in config["pages"]:
-        if Path(page["file"]).name != page["file"]:
-            errors.append("Public page files must be root-level filenames")
-        if page.get("markdown") and Path(page["markdown"]).name != page["markdown"]:
-            errors.append("Markdown mirrors must be root-level filenames")
+        if not safe_public_path(page["file"]):
+            errors.append("Public page files must be safe relative paths")
+        if page.get("markdown") and not safe_public_path(page["markdown"]):
+            errors.append("Markdown mirrors must be safe relative paths")
+        canonical_file = page["path"].lstrip("/")
+        if not canonical_file or canonical_file.endswith("/"):
+            canonical_file += "index.html"
+        if canonical_file != page["file"]:
+            errors.append(f"Canonical path does not match public file: {page['file']}")
     for service in config["services"]:
         page = pages_by_file.get(service["file"])
         if not page or page["path"] != service["path"] or page.get("serviceId") != service["id"]:
@@ -481,7 +582,7 @@ def validate(config, outputs, page_graphs):
         errors.append("Social image must be the declared PNG")
     elif struct.unpack(">II", image[16:24]) != (config["socialImage"]["width"], config["socialImage"]["height"]):
         errors.append("Social image dimensions differ from the PNG")
-    documents = {p["file"]: Document(outputs[p["file"]]) for p in config["pages"]}
+    documents = {p["file"]: Document(outputs[p["file"]]) for locale in configs for p in locale["pages"]}
     all_ids = {}
     for filename, document in documents.items():
         ids = [n.attrs["id"] for n in document.root.all() if n.attrs.get("id")]
@@ -533,6 +634,31 @@ def validate(config, outputs, page_graphs):
     for page in config["pages"]:
         filename, url = page["file"], page_url(config, page)
         document = documents[filename].root
+        html_node = document.first(tag="html")
+        if html_node is None or html_node.attrs.get("lang") != config["language"]:
+            errors.append(f"{filename}: invalid document language")
+        switchers = [node for node in document.all("nav") if node.has_class("language-switcher")]
+        if len(switchers) != 1:
+            errors.append(f"{filename}: expected one language switcher")
+        else:
+            switcher = switchers[0]
+            if not compact(switcher.attrs.get("aria-label") or ""):
+                errors.append(f"{filename}: language switcher needs an accessible name")
+            links = list(switcher.all("a"))
+            targets = {language: target for language, target, _ in page_variants(configs, page)}
+            if len(links) != len(targets) or {link.attrs.get("hreflang") for link in links} != set(targets):
+                errors.append(f"{filename}: language switcher must link to every configured language once")
+            for link in links:
+                language = link.attrs.get("hreflang")
+                if urljoin(url, link.attrs.get("href") or "") != targets.get(language):
+                    errors.append(f"{filename}: incorrect language switch target for {language}")
+                if link.attrs.get("lang") != language:
+                    errors.append(f"{filename}: language switch link lang and hreflang disagree")
+                expected_current = "page" if language == config["language"] else None
+                if link.attrs.get("aria-current") != expected_current:
+                    errors.append(f"{filename}: incorrect current language indicator for {language}")
+                if not (compact(link.attrs.get("aria-label") or "") or plain(link)):
+                    errors.append(f"{filename}: language switch link needs an accessible name")
         titles = list(document.all("title"))
         if len(titles) != 1 or plain(titles[0]) != page["title"]:
             errors.append(f"{filename}: invalid title")
@@ -544,10 +670,25 @@ def validate(config, outputs, page_graphs):
         canonical = [n.attrs.get("href") for n in document.all("link") if n.attrs.get("rel") == "canonical"]
         if canonical != ([] if page["kind"] == "error" else [url]):
             errors.append(f"{filename}: invalid canonical")
+        alternates = alternate_pages(configs, page)
+        actual_alternates = [(n.attrs.get("hreflang"), n.attrs.get("href")) for n in document.all("link")
+                             if n.attrs.get("rel") == "alternate" and n.attrs.get("hreflang")]
+        if actual_alternates != [(language, target) for language, target, _ in alternates]:
+            errors.append(f"{filename}: invalid language alternatives")
+        og_locale = [n.attrs.get("content") for n in metadata if n.attrs.get("property") == "og:locale"]
+        if og_locale != [config["locale"]]:
+            errors.append(f"{filename}: invalid Open Graph locale")
+        og_alternates = [n.attrs.get("content") for n in metadata if n.attrs.get("property") == "og:locale:alternate"]
+        if og_alternates != [locale for language, _, locale in alternates
+                             if language not in {config["language"], "x-default"}]:
+            errors.append(f"{filename}: invalid Open Graph alternative locales")
         for node in document.all():
             for attr in ("href", "src"):
                 if node.attrs.get(attr):
                     local_url(node.attrs[attr], url, filename)
+            for candidate in (node.attrs.get("srcset") or "").split(","):
+                if candidate.strip():
+                    local_url(candidate.split()[0], url, filename)
         scripts = [n for n in document.all("script") if n.attrs.get("type") == "application/ld+json"]
         if len(scripts) != bool(page_graphs[filename]):
             errors.append(f"{filename}: unexpected JSON-LD count")
@@ -560,7 +701,8 @@ def validate(config, outputs, page_graphs):
             mirror = outputs[page["markdown"]]
             for match in re.finditer(r"\]\((https?://[^\s)]+)\)", mirror):
                 local_url(match.group(1), url, page["markdown"])
-    check_graph(json.loads(outputs["ai.json"])["@graph"], "ai.json")
+    ai_path = discovery_path(config, "ai.json")
+    check_graph(json.loads(outputs[ai_path])["@graph"], ai_path)
     source_faqs = source_facts(config, documents)[2]
     faq_file = config["faq"]["file"]
     faq_page = next(p for p in config["pages"] if p["file"] == faq_file)
@@ -580,16 +722,25 @@ def validate(config, outputs, page_graphs):
     if report_page.get("pdf"):
         pdf_url = absolute(config, report_page["pdf"])
         report_body = documents[report_page["file"]].root.first(tag="body")
-        if not any(absolute(config, node.attrs.get("href") or "") == pdf_url
+        if not any(urljoin(page_url(config, report_page), node.attrs.get("href") or "") == pdf_url
                    and "hidden" not in node.attrs for node in report_body.all("a")):
             errors.append("Report PDF must have a visible download link")
         if pdf_url not in outputs[report_page["markdown"]]:
             errors.append("Report PDF is missing from its text mirror")
     sitemap = ET.fromstring(outputs["sitemap.xml"])
     locations = [n.text for n in sitemap.findall("{*}url/{*}loc")]
-    expected = [page_url(config, p) for p in config["pages"] if p["indexable"]]
+    expected = [page_url(locale, p) for locale in configs for p in locale["pages"] if p["indexable"]]
     if locations != expected:
         errors.append("Sitemap must contain exactly the canonical indexable pages")
+    sitemap_pages = {page_url(locale, p): p for locale in configs for p in locale["pages"] if p["indexable"]}
+    for entry in sitemap.findall("{*}url"):
+        location = entry.find("{*}loc").text
+        page = sitemap_pages.get(location)
+        if page:
+            alternatives = [(link.attrib.get("hreflang"), link.attrib.get("href"))
+                            for link in entry.findall("{http://www.w3.org/1999/xhtml}link")]
+            if alternatives != [(language, url) for language, url, _ in alternate_pages(configs, page)]:
+                errors.append(f"Sitemap has invalid language alternatives: {location}")
     if len({p["title"] for p in config["pages"]}) != len(config["pages"]):
         errors.append("Page titles must be unique")
     for page in config["pages"]:
@@ -604,20 +755,32 @@ def main():
     parser.add_argument("--check", action="store_true", help="Validate generated files without writing")
     args = parser.parse_args()
     try:
-        config = json.loads((ROOT / "seo/site.json").read_text(encoding="utf-8"))
-        sources = {p["file"]: (ROOT / p["file"]).read_text(encoding="utf-8") for p in config["pages"]}
-        documents = {filename: Document(content) for filename, content in sources.items()}
-        outputs, page_graphs = build(config, sources, documents)
-        validate(config, outputs, page_graphs)
+        configs = load_configs()
+        outputs, locale_graphs = {}, []
+        service_count = faq_count = 0
+        for config in configs:
+            sources = {p["file"]: (ROOT / p["file"]).read_text(encoding="utf-8") for p in config["pages"]}
+            documents = {filename: Document(content) for filename, content in sources.items()}
+            localized, page_graphs = build(config, sources, documents, configs)
+            if outputs.keys() & localized.keys():
+                raise ValueError("Locales must not write to the same public files")
+            outputs.update(localized)
+            locale_graphs.append(page_graphs)
+            service_count += len(config["services"])
+            faq_count += len(source_facts(config, documents)[2])
+        outputs.update(shared_discovery(configs))
+        for config, page_graphs in zip(configs, locale_graphs):
+            validate(config, outputs, page_graphs, configs)
         drift = [filename for filename, content in outputs.items()
                  if not (ROOT / filename).is_file() or (ROOT / filename).read_text(encoding="utf-8") != content]
         if args.check and drift:
             raise ValueError("Generated discovery files are stale: " + ", ".join(drift) + ". Run python scripts/build_discovery.py.")
         if not args.check:
             for filename in drift:
+                (ROOT / filename).parent.mkdir(parents=True, exist_ok=True)
                 (ROOT / filename).write_text(outputs[filename], encoding="utf-8")
         print(f"Discovery {'verified' if args.check else 'generated'}: {len(outputs)} files, "
-              f"{len(config['services'])} services, {len(source_facts(config, documents)[2])} FAQ answers.")
+              f"{len(configs)} languages, {service_count} services, {faq_count} FAQ answers.")
         return 0
     except (ValueError, KeyError, OSError, json.JSONDecodeError) as error:
         print(f"Discovery validation failed: {error}", file=sys.stderr)

@@ -1,0 +1,150 @@
+{
+  "language": "be",
+  "locale": "be_BY",
+  "basePath": "/be/",
+  "socialImage": {
+    "path": "assets/social-card-be.png",
+    "width": 1200,
+    "height": 630,
+    "alt": "DESTINY — пентэст Web, API і AI-сістэм. Знайсці пралом. Да атакі."
+  },
+  "pages": [
+    {
+      "file": "be/index.html",
+      "path": "/be/",
+      "kind": "home",
+      "title": "Пентэст Web, API і AI-сістэм — DESTINY",
+      "description": "Пентэст вэб-прыкладанняў, API і AI-сістэм. Праверка доступу і бізнес-логікі, аналіз RAG і агентаў, справаздача з рэкамендацыямі і рэтэст выпраўленняў.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/index.md"
+    },
+    {
+      "file": "be/web-pentest.html",
+      "path": "/be/web-pentest.html",
+      "kind": "service",
+      "title": "Пентэст вэб-прыкладанняў — DESTINY",
+      "description": "Праверка бяспекі вэб-прыкладанняў, SaaS і асабістых кабінетаў: уваход, ролі, доступ да даных і бізнес-логіка. Справаздача з доказамі і рэкамендацыямі.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/web-pentest.md",
+      "serviceId": "web-service"
+    },
+    {
+      "file": "be/api-pentest.html",
+      "path": "/be/api-pentest.html",
+      "kind": "service",
+      "title": "Пентэст API і інтэграцый — DESTINY",
+      "description": "Праверка бяспекі API: доступ да аб’ектаў, абароненых палёў і функцый, токены, інтэграцыі і крытычныя аперацыі. Рэкамендацыі па выпраўленні.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/api-pentest.md",
+      "serviceId": "api-service"
+    },
+    {
+      "file": "be/ai-security.html",
+      "path": "/be/ai-security.html",
+      "kind": "service",
+      "title": "Бяспека AI, LLM, RAG і агентаў — DESTINY",
+      "description": "Праверка бяспекі AI-сістэм і LLM red teaming: знешнія інструкцыі, доступ да RAG, паўнамоцтвы агентаў і выкарыстанне адказаў мадэлі.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/ai-security.md",
+      "serviceId": "ai-service"
+    },
+    {
+      "file": "be/retest.html",
+      "path": "/be/retest.html",
+      "kind": "service",
+      "title": "Праверка рэлізаў і рэтэст уразлівасцей — DESTINY",
+      "description": "Праверка бяспекі пасля рэлізаў і паўторная праверка выпраўленняў. Пацвярджэнне статусу знаходак, ацэнка змен і рэкамендацыі для каманды.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/retest.md",
+      "serviceId": "release-service"
+    },
+    {
+      "file": "be/approach.html",
+      "path": "/be/approach.html",
+      "kind": "approach",
+      "title": "Як праходзіць пентэст: этапы, доступы і вынік — DESTINY",
+      "description": "Як арганізавана праверка бяспекі: падрыхтоўка, пошук і пацвярджэнне ўразлівасцей, справаздача і рэтэст. Адказы на пытанні пра доступы, тэрміны і кошт.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/approach.md"
+    },
+    {
+      "file": "be/report-example.html",
+      "path": "/be/report-example.html",
+      "kind": "report",
+      "title": "Прыклад справаздачы пра пентэст Web/API і AI — DESTINY",
+      "description": "Прыклад справаздачы пра пентэст: рызыкі, аб’ём праверкі, знаходкі Web/API і AI, доказы і рэкамендацыі. Усе сцэнарыі і даныя выдуманыя. PDF па-руску.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/report-example.md",
+      "pdf": "assets/reports/destiny-pentest-report-example.pdf",
+      "pdfLanguage": "ru"
+    },
+    {
+      "file": "be/contact.html",
+      "path": "/be/contact.html",
+      "kind": "contact",
+      "title": "Абмеркаваць пентэст і бяспеку AI — DESTINY",
+      "description": "Абмяркуйце пентэст Web, API, AI-сістэм або рэтэст выпраўленняў. Звяжыцеся з DESTINY праз LinkedIn або электронную пошту.",
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/contact.md"
+    },
+    {
+      "file": "be/privacy.html",
+      "path": "/be/privacy.html",
+      "kind": "privacy",
+      "title": "Даныя і канфідэнцыяльнасць — DESTINY",
+      "description": "Інфармацыя пра кантакты і канфідэнцыяльнасць: пераход у LinkedIn, зварот па электроннай пошце і даныя, якія вы перадаеце падчас перапіскі.",
+      "indexable": false,
+      "updated": "2026-11-06"
+    },
+    {
+      "file": "be/404.html",
+      "path": "/be/404.html",
+      "kind": "error",
+      "title": "Старонка не знойдзена — DESTINY",
+      "description": "Вярніцеся да паслуг DESTINY: пентэсту вэб-прыкладанняў, API і AI-сістэм.",
+      "indexable": false
+    }
+  ],
+  "services": [
+    {
+      "id": "web-service",
+      "name": "Пентэст вэб-прыкладанняў",
+      "serviceType": "Web application penetration testing",
+      "file": "be/web-pentest.html",
+      "path": "/be/web-pentest.html"
+    },
+    {
+      "id": "api-service",
+      "name": "Пентэст API і інтэграцый",
+      "serviceType": "API penetration testing",
+      "file": "be/api-pentest.html",
+      "path": "/be/api-pentest.html"
+    },
+    {
+      "id": "ai-service",
+      "name": "Праверка бяспекі AI, LLM, RAG і агентаў",
+      "serviceType": "AI security assessment and LLM red teaming",
+      "file": "be/ai-security.html",
+      "path": "/be/ai-security.html"
+    },
+    {
+      "id": "release-service",
+      "name": "Праверка рэлізаў і рэтэст уразлівасцей",
+      "serviceType": "Release security assessment and vulnerability retesting",
+      "file": "be/retest.html",
+      "path": "/be/retest.html"
+    }
+  ],
+  "faq": {
+    "file": "be/approach.html",
+    "sectionId": "questions"
+  }
+}

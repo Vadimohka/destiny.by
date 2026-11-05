@@ -9,6 +9,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
 from urllib.request import HTTPRedirectHandler, Request, build_opener
 
+from build_discovery import load_configs
+
 
 ROOT = Path(__file__).resolve().parent.parent
 ENDPOINT = "https://api.indexnow.org/indexnow"
@@ -30,7 +32,8 @@ def warning(message):
 
 
 def payload_from_source():
-    config = json.loads((ROOT / "seo/site.json").read_text(encoding="utf-8"))
+    configs = load_configs()
+    config = configs[0]
     origin = config["origin"].rstrip("/")
     parsed = urlsplit(origin)
     if (
@@ -50,7 +53,9 @@ def payload_from_source():
         raise ValueError("The published IndexNow key must contain 8–128 letters, digits or dashes.")
 
     urls = []
-    for page in config["pages"]:
+    if any(locale["origin"].rstrip("/") != origin for locale in configs):
+        raise ValueError("All locales must share the primary IndexNow origin.")
+    for page in (page for locale in configs for page in locale["pages"]):
         if page.get("indexable") is not True:
             continue
         path = page["path"]

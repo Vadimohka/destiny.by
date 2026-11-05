@@ -39,20 +39,26 @@ jobs:
         shell: bash
         run: |
           python3 - <<'PYTHON'
-          import json
           import shutil
+          import sys
           from pathlib import Path
 
-          config = json.loads(Path("seo/site.json").read_text(encoding="utf-8"))
-          public = {page["file"] for page in config["pages"]}
-          public.update(page["markdown"] for page in config["pages"] if page.get("markdown"))
-          public.update({"robots.txt", "sitemap.xml", "ai.json", "llms.txt", "llms-full.txt", "indexnow-key.txt", "CNAME", ".nojekyll"})
+          sys.path.insert(0, "scripts")
+          from build_discovery import discovery_path, load_configs, safe_public_path
+
+          public = {"robots.txt", "sitemap.xml", "indexnow-key.txt", "CNAME", ".nojekyll"}
+          for config in load_configs():
+              public.update(page["file"] for page in config["pages"])
+              public.update(page["markdown"] for page in config["pages"] if page.get("markdown"))
+              public.update(discovery_path(config, name) for name in ("ai.json", "llms.txt", "llms-full.txt"))
           target = Path("_site")
           target.mkdir(exist_ok=True)
           for name in sorted(public):
-              if Path(name).name != name:
-                  raise ValueError("Public page files must be root-level filenames")
-              shutil.copy2(name, target / name)
+              if not safe_public_path(name):
+                  raise ValueError("Public files must be safe relative paths")
+              destination = target / name
+              destination.parent.mkdir(parents=True, exist_ok=True)
+              shutil.copy2(name, destination)
           shutil.copytree("assets", target / "assets", dirs_exist_ok=True)
           PYTHON
 
