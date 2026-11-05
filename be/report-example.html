@@ -23,12 +23,12 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="DESTINY — пентэст Web, API і AI-сістэм. Знайсці пралом. Да атакі.">
+  <meta property="og:image:alt" content="DESTINY — пентэст Web, API і AI-сістэм — Знайсці пралом — Да атакі">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Прыклад справаздачы пра пентэст Web/API і AI — DESTINY">
   <meta name="twitter:description" content="Прыклад справаздачы пра пентэст: рызыкі, аб’ём праверкі, знаходкі Web/API і AI, доказы і рэкамендацыі. Усе сцэнарыі і даныя выдуманыя. PDF па-руску.">
   <meta name="twitter:image" content="https://destiny.by/assets/social-card-be.png">
-  <meta name="twitter:image:alt" content="DESTINY — пентэст Web, API і AI-сістэм. Знайсці пралом. Да атакі.">
+  <meta name="twitter:image:alt" content="DESTINY — пентэст Web, API і AI-сістэм — Знайсці пралом — Да атакі">
   <link rel="describedby" href="https://destiny.by/be/llms.txt" type="text/plain">
   <link rel="describedby" href="https://destiny.by/be/ai.json" type="application/ld+json">
   <link rel="sitemap" href="https://destiny.by/sitemap.xml" type="application/xml">
@@ -168,7 +168,7 @@
         <div class="page-hero-copy">
           <nav class="page-breadcrumb" aria-label="Навігацыйны ланцужок"><a href="/be/">Галоўная</a><span aria-hidden="true">/</span><span aria-current="page">Прыклад справаздачы</span></nav>
       <p class="eyebrow"><span>Вынік</span> / Ад знаходкі да задачы</p>
-      <h1 id="page-title">Прыклад справаздачы<br><em>аб пентэсце.</em></h1>
+      <h1 id="page-title">Прыклад справаздачы<br><em>аб пентэсце</em></h1>
       <p class="page-lede">Зводка для кіраўніка і тэхнічная частка для распрацоўшчыкаў: уразлівасці, наступствы, доказы і рэкамендацыі па выпраўленні.</p>
       <div class="page-actions"><a class="button" href="../assets/reports/destiny-pentest-report-example.pdf" download="DESTINY-report-example.pdf" type="application/pdf" hreflang="ru">Спампаваць PDF (па-руску) <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#executive-summary">Чытаць на сайце</a></div>
       <p class="report-file-meta">PDF па-руску · 7 старонак · A4</p>
@@ -182,7 +182,7 @@
       </aside>
       <div class="doc-content" id="report-content">
         <section class="doc-section" id="executive-summary" aria-labelledby="executive-title">
-          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>01</span> / Для кіраўніка</p><h2 id="executive-title">Зводка<br><em>рызык.</em></h2><p>Зводка тлумачыць, якія наступствы для прадукту маюць тэхнічныя назіранні і ў якім парадку дзейнічаць. У гэтых прыкладах парушаюцца дзве розныя межы даверу.</p></div>
+          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>01</span> / Для кіраўніка</p><h2 id="executive-title">Зводка<br><em>рызык</em></h2><p>Зводка тлумачыць, якія наступствы для прадукту маюць тэхнічныя назіранні і ў якім парадку дзейнічаць. У гэтых прыкладах парушаюцца дзве розныя межы даверу.</p></div>
           <div class="doc-executive">
             <article><p class="doc-label">Web / API · DEMO-01</p><h3>Даныя аднаго кліента даступныя іншаму</h3><p>Звычайны ўліковы запіс дазваляе атрымаць чужы дакумент. Першая задача — закрыць доступ на ўзроўні аб’екта і праверыць падобныя аперацыі ў API.</p><a class="text-link" href="#web-example">Разабраць знаходку <span aria-hidden="true">↗</span></a></article>
             <article><p class="doc-label">AI / RAG · DEMO-02</p><h3>Дакумент кіруе дзеяннем агента</h3><p>Знешняя інструкцыя прыводзіць да запыту па-за правамі карыстальніка. Першая задача — забяспечыць незалежную праверку дазволаў на баку інструмента.</p><a class="text-link" href="#ai-example">Разабраць знаходку <span aria-hidden="true">↗</span></a></article>
@@ -191,11 +191,11 @@
         </section>
         <section class="doc-section" id="coverage" aria-labelledby="coverage-title">
           <div class="doc-section-header" data-reveal><p class="eyebrow"><span>02</span> / Межы выніку</p><h2 id="coverage-title">Што ўваходзіць у праверку</h2><p>Справаздача апісвае правераныя сістэмы, ролі, аперацыі і абмежаванні. З яе павінна быць зразумела, на якія вобласці распаўсюджваюцца высновы.</p></div>
-          <div class="doc-table-wrap" role="region" aria-label="Вобласці дэманстрацыйнай справаздачы" tabindex="0"><table class="doc-table"><thead><tr><th scope="col">Вобласць</th><th scope="col">Што разглядаецца ва ўзоры</th><th scope="col">Што фіксуецца ў праекце</th></tr></thead><tbody><tr><td>Web / API</td><td>Доступ да дакументаў паміж арганізацыямі.</td><td>Прыкладанні, версіі, ролі, аперацыі і тэставыя ўліковыя запісы.</td></tr><tr><td>AI / RAG</td><td>Уплыў знешняга дакумента на выклік інструмента.</td><td>Мадэль, крыніцы ведаў, інструменты і правы карыстальніка.</td></tr><tr><td>Паўторная праверка</td><td>Крытэрыі пацвярджэння выпраўленняў.</td><td>Версія пасля выпраўлення, паўтораныя сцэнарыі і выніковы статус.</td></tr><tr><td>Па-за межамі ўзору</td><td>Сетка, воблачная інфраструктура, сацыяльная інжынерыя і нагрузка.</td><td>Выключэнні, недаступныя кампаненты і абмежаванні метадаў.</td></tr></tbody></table></div>
+          <div class="doc-table-wrap" role="region" aria-label="Вобласці дэманстрацыйнай справаздачы" tabindex="0"><table class="doc-table"><thead><tr><th scope="col">Вобласць</th><th scope="col">Што разглядаецца ва ўзоры</th><th scope="col">Што фіксуецца ў праекце</th></tr></thead><tbody><tr><td>Web / API</td><td>Доступ да дакументаў паміж арганізацыямі</td><td>Прыкладанні, версіі, ролі, аперацыі і тэставыя ўліковыя запісы</td></tr><tr><td>AI / RAG</td><td>Уплыў знешняга дакумента на выклік інструмента</td><td>Мадэль, крыніцы ведаў, інструменты і правы карыстальніка</td></tr><tr><td>Паўторная праверка</td><td>Крытэрыі пацвярджэння выпраўленняў</td><td>Версія пасля выпраўлення, паўтораныя сцэнарыі і выніковы статус</td></tr><tr><td>Па-за межамі ўзору</td><td>Сетка, воблачная інфраструктура, сацыяльная інжынерыя і нагрузка</td><td>Выключэнні, недаступныя кампаненты і абмежаванні метадаў</td></tr></tbody></table></div>
           <p class="doc-caption">Фактычны аб’ём праверкі ў рабочай справаздачы аддзяляецца ад узгодненага плана: недаступная функцыя або неправераная роля застаюцца пазначанымі як абмежаванні.</p>
         </section>
         <article class="doc-finding" id="web-example" aria-labelledby="web-finding-title">
-          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">Web / API · Размежаванне доступу</p><span class="doc-finding-id">DEMO-01 / УЗОР</span></div><h2 id="web-finding-title">Доступ да чужых<br>дакументаў.</h2><p>Карыстальнік адной арганізацыі атрымлівае дакумент іншай. Прыкладанне правярае ўваход у сістэму, але прапускае праверку права на канкрэтны аб’ект.</p></header>
+          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">Web / API · Размежаванне доступу</p><span class="doc-finding-id">DEMO-01 / УЗОР</span></div><h2 id="web-finding-title">Доступ да чужых<br>дакументаў</h2><p>Карыстальнік адной арганізацыі атрымлівае дакумент іншай. Прыкладанне правярае ўваход у сістэму, але прапускае праверку права на канкрэтны аб’ект.</p></header>
           <dl class="doc-metadata"><div><dt>Умоўная сістэма</dt><dd>app.example</dd></div><div><dt>Пачатковы доступ</dt><dd>Звычайны ўліковы запіс</dd></div><div><dt>Парушаная мяжа</dt><dd>Ізаляцыя арганізацый</dd></div></dl>
           <div class="doc-finding-body">
             <section class="doc-finding-section" aria-labelledby="web-impact-title"><h3 id="web-impact-title">Уплыў на бізнес</h3><p>Памылка адкрывае шлях да кліенцкіх дакументаў па-за межамі дазволаў. Магчымая шкода залежыць ад адчувальнасці дакументаў, даступных аперацый і колькасці аб’ектаў. Магчымасць чытання сама па сабе не даказвае магчымасць змены або выдалення — гэтыя дзеянні правяраюцца асобна.</p></section>
@@ -207,7 +207,7 @@
           </div>
         </article>
         <article class="doc-finding" id="ai-example" aria-labelledby="ai-finding-title">
-          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">AI / RAG · Правы інструментаў</p><span class="doc-finding-id">DEMO-02 / УЗОР</span></div><h2 id="ai-finding-title">Падмена інструкцый<br>і правы агента.</h2><p>Дакумент з базы ведаў змяняе паводзіны агента. Інструмент прымае сфарміраваны агентам запыт без незалежнай праверкі правоў карыстальніка.</p></header>
+          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">AI / RAG · Правы інструментаў</p><span class="doc-finding-id">DEMO-02 / УЗОР</span></div><h2 id="ai-finding-title">Падмена інструкцый<br>і правы агента</h2><p>Дакумент з базы ведаў змяняе паводзіны агента. Інструмент прымае сфарміраваны агентам запыт без незалежнай праверкі правоў карыстальніка.</p></header>
           <dl class="doc-metadata"><div><dt>Умоўная сістэма</dt><dd>assistant.example</dd></div><div><dt>Пачатковы доступ</dt><dd>Чытанне даных сваёй каманды</dd></div><div><dt>Парушаная мяжа</dt><dd>Крыніца ведаў → дзеянне</dd></div></dl>
           <div class="doc-finding-body">
             <section class="doc-finding-section" aria-labelledby="ai-impact-title"><h3 id="ai-impact-title">Уплыў на бізнес</h3><p>Недавераная крыніца можа стаць прычынай дзеяння па-за дазволамі: запыту чужых даных або змены аб’екта. Ва ўзоры зафіксавана прыняцце недазволенага запыту тэставым інструментам. Фактычны экспарт і перадача даных не мадэлююцца.</p></section>
@@ -223,7 +223,7 @@
           <dl class="doc-statuses"><div><dt>Выпраўлена</dt><dd>Сцэнарый больш не ўзнаўляецца, узгодненыя звязаныя праверкі пройдзеныя. Пазначаныя ўмовы і межы высновы.</dd></div><div><dt>Выпраўлена часткова</dt><dd>Частка шляху закрытая, але застаецца варыянт узнаўлення або неахопленая частка ўзгодненага выпраўлення.</dd></div><div><dt>Узнаўляецца</dt><dd>Пасля змен парушэнне захоўваецца. Прыведзены актуальны доказ на новай версіі.</dd></div><div><dt>Не ўдалося праверыць</dt><dd>Няма неабходнага доступу, кампанента або ўмовы. Пазначаная прычына; такі статус не азначае выпраўлення.</dd></div></dl>
         </section>
         <section class="doc-section" id="handover" aria-labelledby="handover-title">
-          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>06</span> / Для працы каманды</p><h2 id="handover-title">Што атрымлівае<br><em>каманда.</em></h2></div>
+          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>06</span> / Для працы каманды</p><h2 id="handover-title">Што атрымлівае<br><em>каманда</em></h2></div>
           <ol class="doc-deliverables"><li><div><h3>Зводка для прыняцця рашэнняў</h3><p>Асноўныя рызыкі, прыярытэт выпраўленняў і абмежаванні праверкі. Аснова для рашэння пра выпуск, тэрміны і размеркаванне рэсурсаў.</p></div></li><li><div><h3>Знаходкі для распрацоўкі</h3><p>Ідэнтыфікатар, закранутая вобласць, умовы, доказы, уплыў, рэкамендацыі і крытэрыі прыёмкі выпраўлення.</p></div></li><li><div><h3>Карта ахопу</h3><p>Правераныя сістэмы, ролі і сцэнарыі. Недаступныя ўчасткі і выключэнні бачныя асобна ад выкананых работ.</p></div></li><li><div><h3>Абнаўленне пасля рэтэсту</h3><p>Сувязь кожнага паўторнага назірання з першапачатковай знаходкай, версіяй выпраўлення і выніковым статусам.</p></div></li></ol>
         </section>
         <section class="page-cta" data-reveal aria-labelledby="report-cta-title"><div><h2 id="report-cta-title">Абмяркуем вашу сістэму</h2><p>Апішыце прадукт і крытычныя аперацыі. Вызначым, якія праверкі дадуць вашай камандзе карысны вынік.</p></div><div class="report-cta-actions"><a class="button" href="contact.html">Абмеркаваць праверку</a><a class="text-link" href="../assets/reports/destiny-pentest-report-example.pdf" download="DESTINY-report-example.pdf" type="application/pdf" hreflang="ru">Спампаваць PDF (па-руску) <span aria-hidden="true">↓</span></a></div></section>
@@ -232,10 +232,10 @@
   </main>
   <footer class="site-footer">
     <div class="container footer-top">
-      <div class="footer-brand"><a class="brand" href="/be/" aria-label="DESTINY — галоўная"><img src="../assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p>Пентэст прыкладанняў,<br>API і AI-сістэм.</p></div>
+      <div class="footer-brand"><a class="brand" href="/be/" aria-label="DESTINY — галоўная"><img src="../assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p>Пентэст прыкладанняў,<br>API і AI-сістэм</p></div>
       <nav class="footer-group" aria-label="Паслугі"><h2>Паслугі</h2><a href="web-pentest.html">Вэб-прыкладанні</a><a href="api-pentest.html">API і інтэграцыі</a><a href="ai-security.html">AI, RAG і агенты</a><a href="retest.html">Рэлізы і рэтэст</a></nav>
       <nav class="footer-group" aria-label="Пра праверку"><h2>Пра праверку</h2><a href="approach.html">Як працуем</a><a href="report-example.html">Прыклад справаздачы</a><a href="approach.html#questions">Пытанні і адказы</a><a href="contact.html">Кантакты</a></nav>
-      <div class="footer-action"><p>Абмяркуем<br>ваш прадукт.</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
+      <div class="footer-action"><p>Абмяркуем<br>ваш прадукт</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
     </div>
     <div class="container footer-bottom"><p>© <span id="copyright-year">2026</span> DESTINY</p><a href="privacy.html">Прыватнасць</a><a href="#main">Уверх <span aria-hidden="true">↑</span></a></div>
   </footer>
