@@ -163,5 +163,8 @@
     "file": "approach.html",
     "sectionId": "questions"
   },
-  "linkedin": "https://www.linkedin.com/in/vadimohka/"
+  "linkedin": "https://www.linkedin.com/in/vadimohka/",
+  "localizations": [
+    "seo/be.json"
+  ]
 }

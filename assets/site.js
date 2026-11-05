@@ -8,18 +8,33 @@
 
   const menuToggle = document.querySelector('.menu-toggle');
   const nav = document.querySelector('#site-nav');
+  const menuLabels = document.documentElement.lang === 'be'
+    ? { open: 'Адкрыць меню', close: 'Закрыць меню' }
+    : { open: 'Открыть меню', close: 'Закрыть меню' };
+
+  // Static links work without JavaScript; preserve a section when switching languages.
+  const languageLinks = [...document.querySelectorAll('.language-switcher a')];
+  const updateLanguageLinks = () => languageLinks.forEach(link => {
+    const url = new URL(link.href, window.location.href);
+    url.hash = window.location.hash;
+    link.href = url.pathname + url.search + url.hash;
+  });
+  updateLanguageLinks();
+  window.addEventListener('hashchange', updateLanguageLinks);
+
   const closeMenu = (restoreFocus = false) => {
     if (!menuToggle || !nav) return;
     menuToggle.setAttribute('aria-expanded', 'false');
-    menuToggle.setAttribute('aria-label', 'Открыть меню');
+    menuToggle.setAttribute('aria-label', menuLabels.open);
     nav.classList.remove('is-open');
     if (restoreFocus) menuToggle.focus();
   };
-  if (menuToggle && nav) menuToggle.addEventListener('click', () => {
+  if (menuToggle && nav) menuToggle.addEventListener('click', event => {
     const open = menuToggle.getAttribute('aria-expanded') !== 'true';
     menuToggle.setAttribute('aria-expanded', String(open));
-    menuToggle.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+    menuToggle.setAttribute('aria-label', open ? menuLabels.close : menuLabels.open);
     nav.classList.toggle('is-open', open);
+    if (open && event.detail === 0) nav.querySelector('a')?.focus();
   });
   nav?.addEventListener('click', event => {
     if (event.target.closest('a')) closeMenu();
@@ -30,7 +45,7 @@
   document.addEventListener('click', event => {
     if (nav && menuToggle && !nav.contains(event.target) && !menuToggle.contains(event.target)) closeMenu();
   });
-  window.matchMedia('(min-width: 801px)').addEventListener('change', () => closeMenu());
+  window.matchMedia('(min-width: 1101px)').addEventListener('change', () => closeMenu());
 
   const initTabs = (listSelector, buttonSelector, datasetKey, isService = false) => {
     const tablist = document.querySelector(listSelector);

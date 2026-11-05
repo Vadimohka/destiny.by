@@ -1,0 +1,579 @@
+{
+  "@context": "https://schema.org",
+  "@id": "https://destiny.by/be/ai.json",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://destiny.by/be/#organization",
+      "name": "DESTINY",
+      "url": "https://destiny.by/be/",
+      "description": "DESTINY правярае вэб-прыкладанні, API і AI-сістэмы. Вы атрымліваеце апісанне рызык, доказы ўразлівасцей і рэкамендацыі для каманды распрацоўкі.",
+      "logo": {
+        "@id": "https://destiny.by/be/#logo"
+      },
+      "email": "security@destiny.by"
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://destiny.by/be/#logo",
+      "url": "https://destiny.by/assets/destiny-wordmark.svg",
+      "contentUrl": "https://destiny.by/assets/destiny-wordmark.svg",
+      "width": 707,
+      "height": 120,
+      "caption": "DESTINY"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://destiny.by/be/#website",
+      "url": "https://destiny.by/be/",
+      "name": "DESTINY",
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "inLanguage": "be"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/#webpage",
+      "url": "https://destiny.by/be/",
+      "name": "Пентэст Web, API і AI-сістэм — DESTINY",
+      "description": "Пентэст вэб-прыкладанняў, API і AI-сістэм. Праверка доступу і бізнес-логікі, аналіз RAG і агентаў, справаздача з рэкамендацыямі і рэтэст выпраўленняў.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#service-catalog"
+      }
+    },
+    {
+      "@type": "OfferCatalog",
+      "@id": "https://destiny.by/be/#service-catalog",
+      "name": "Паслугі DESTINY",
+      "url": "https://destiny.by/be/#services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@id": "https://destiny.by/be/#web-service-entity"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@id": "https://destiny.by/be/#api-service-entity"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@id": "https://destiny.by/be/#ai-service-entity"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@id": "https://destiny.by/be/#release-service-entity"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://destiny.by/be/#web-service-entity",
+      "name": "Пентэст вэб-прыкладанняў",
+      "serviceType": "Web application penetration testing",
+      "description": "Пентэст вэб-прыкладанняў паказвае, ці можа зламыснік атрымаць чужыя даныя, захапіць уліковы запіс або абысці правілы прадукту. Правяраем асабістыя кабінеты, SaaS і ўнутраныя сістэмы да і пасля ўваходу.",
+      "provider": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "url": "https://destiny.by/be/web-pentest.html",
+      "serviceOutput": {
+        "@type": "Thing",
+        "description": "Справаздача з праверанымі сцэнарыямі і прыярытэтамі выпраўленняў. Для знойдзеных уразлівасцей — умовы ўзнаўлення, доказы і тлумачэнне магчымай шкоды."
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://destiny.by/be/#api-service-entity",
+      "name": "Пентэст API і інтэграцый",
+      "serviceType": "API penetration testing",
+      "description": "Пентэст API правярае, якія даныя і аперацыі даступныя карыстальніку, прыкладанню або інтэграцыі. Даследуем запыты непасрэдна, уключаючы функцыі, якія не адлюстроўваюцца ў інтэрфейсе прадукту.",
+      "provider": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "url": "https://destiny.by/be/api-pentest.html",
+      "serviceOutput": {
+        "@type": "Thing",
+        "description": "Карта правераных аперацый і роляў. Для знойдзеных праблем — запыты і адказы, наступствы для даных або бізнесу і рэкамендацыі па выпраўленні на баку сервера."
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://destiny.by/be/#ai-service-entity",
+      "name": "Праверка бяспекі AI, LLM, RAG і агентаў",
+      "serviceType": "AI security assessment and LLM red teaming",
+      "description": "Праверка бяспекі AI-сістэм выяўляе шляхі да закрытых даных і дзеянняў па-за правамі карыстальніка. Тэстуем LLM-прыкладанні, RAG і агентаў з доступам да карпаратыўных інструментаў.",
+      "provider": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "url": "https://destiny.by/be/ai-security.html",
+      "serviceOutput": {
+        "@type": "Thing",
+        "description": "Справаздача па правераных сцэнарыях. Для знойдзеных уразлівасцей — крыніца ўздзеяння, дзеянні мадэлі і інструмента, назіраны вынік і спосаб ліквідаваць праблему."
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://destiny.by/be/#release-service-entity",
+      "name": "Праверка рэлізаў і рэтэст уразлівасцей",
+      "serviceType": "Release security assessment and vulnerability retesting",
+      "description": "Праверка рэлізаў выяўляе рызыкі новых функцый. Рэтэст паказвае, ці ліквідаваныя знойдзеныя раней уразлівасці. Выбіраем аб’ём з улікам змен прадукту і задач каманды.",
+      "provider": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "url": "https://destiny.by/be/retest.html",
+      "serviceOutput": {
+        "@type": "Thing",
+        "description": "Абноўлены спіс знаходак з доказамі, праверанай версіяй і статусам кожнай праблемы. Па новых функцыях — вынікі праверкі і рэкамендацыі для распрацоўкі."
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/web-pentest.html#webpage",
+      "url": "https://destiny.by/be/web-pentest.html",
+      "name": "Пентэст вэб-прыкладанняў — DESTINY",
+      "description": "Праверка бяспекі вэб-прыкладанняў, SaaS і асабістых кабінетаў: уваход, ролі, доступ да даных і бізнес-логіка. Справаздача з доказамі і рэкамендацыямі.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/web-pentest.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#web-service-entity"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/web-pentest.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Пентэст вэб-прыкладанняў",
+          "item": "https://destiny.by/be/web-pentest.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/api-pentest.html#webpage",
+      "url": "https://destiny.by/be/api-pentest.html",
+      "name": "Пентэст API і інтэграцый — DESTINY",
+      "description": "Праверка бяспекі API: доступ да аб’ектаў, абароненых палёў і функцый, токены, інтэграцыі і крытычныя аперацыі. Рэкамендацыі па выпраўленні.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/api-pentest.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#api-service-entity"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/api-pentest.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Пентэст API",
+          "item": "https://destiny.by/be/api-pentest.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/ai-security.html#webpage",
+      "url": "https://destiny.by/be/ai-security.html",
+      "name": "Бяспека AI, LLM, RAG і агентаў — DESTINY",
+      "description": "Праверка бяспекі AI-сістэм і LLM red teaming: знешнія інструкцыі, доступ да RAG, паўнамоцтвы агентаў і выкарыстанне адказаў мадэлі.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/ai-security.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#ai-service-entity"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/ai-security.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Бяспека AI-сістэм",
+          "item": "https://destiny.by/be/ai-security.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/retest.html#webpage",
+      "url": "https://destiny.by/be/retest.html",
+      "name": "Праверка рэлізаў і рэтэст уразлівасцей — DESTINY",
+      "description": "Праверка бяспекі пасля рэлізаў і паўторная праверка выпраўленняў. Пацвярджэнне статусу знаходак, ацэнка змен і рэкамендацыі для каманды.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/retest.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#release-service-entity"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/retest.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Праверка рэлізаў і рэтэст",
+          "item": "https://destiny.by/be/retest.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/approach.html#webpage",
+      "url": "https://destiny.by/be/approach.html",
+      "name": "Як праходзіць пентэст: этапы, доступы і вынік — DESTINY",
+      "description": "Як арганізавана праверка бяспекі: падрыхтоўка, пошук і пацвярджэнне ўразлівасцей, справаздача і рэтэст. Адказы на пытанні пра доступы, тэрміны і кошт.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/approach.html#breadcrumb"
+      },
+      "hasPart": {
+        "@id": "https://destiny.by/be/approach.html#faq"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/approach.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Як працуем",
+          "item": "https://destiny.by/be/approach.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://destiny.by/be/approach.html#faq",
+      "url": "https://destiny.by/be/approach.html#questions",
+      "name": "Пытанні пра пентэст",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/approach.html#webpage"
+      },
+      "inLanguage": "be",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-pentest-vs-scanner",
+          "url": "https://destiny.by/be/approach.html#faq-pentest-vs-scanner",
+          "name": "Чым пентэст адрозніваецца ад сканавання?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Сканер знаходзіць прыкметы тыповых праблем. Пентэст правярае, ці можна выкарыстаць іх у вашым прадукце: атрымаць чужыя даныя, павысіць правы ці абысці правілы. У справаздачу трапляюць пацверджаныя вынікі з доказамі."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-access",
+          "url": "https://destiny.by/be/approach.html#faq-access",
+          "name": "Што трэба для пачатку?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Адрасы сістэм, ролі карыстальнікаў і апісанне важных аперацый. Для праверкі пасля ўваходу спатрэбяцца тэставыя ўліковыя запісы. Для API карысная дакументацыя, для AI — схема крыніц ведаў і даступных інструментаў. Даныя доступу перадаюцца асобна ад першага звароту."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-scope",
+          "url": "https://destiny.by/be/approach.html#faq-scope",
+          "name": "Ці можна праверыць адну функцыю?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Так. Можна пачаць з асобнага API, асабістага кабінета, AI-функцыі ці крытычнай аперацыі. У аб’ём уключым звязаныя спосабы доступу да тых жа даных і дзеянняў."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-production",
+          "url": "https://destiny.by/be/approach.html#faq-production",
+          "name": "Ці можна правяраць працоўную сістэму?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Асяроддзе выбіраем да пачатку. Для працоўнай сістэмы вызначаем час правядзення, дапушчальную нагрузку і парадак спынення. Сцэнарыі, якія могуць паўплываць на даныя ці даступнасць, пераносім у тэставае асяроддзе."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-cost",
+          "url": "https://destiny.by/be/approach.html#faq-cost",
+          "name": "Колькі каштуе пентэст і колькі ён доўжыцца?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ацэнка залежыць ад колькасці сістэм і роляў, бізнес-логікі, інтэграцый і глыбіні праверкі. Для AI таксама важныя RAG-крыніцы і інструменты агента. Кошт і тэрміны фіксуем у прапанове пасля знаёмства з задачай."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-critical-findings",
+          "url": "https://destiny.by/be/approach.html#faq-critical-findings",
+          "name": "Калі паведаміце пра крытычную ўразлівасць?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Праз загадзя выбраны канал, не чакаючы выніковай справаздачы. Паведамім пра закранутую вобласць, магчымы ўплыў і доказы, неабходныя для рашэння аб выпраўленні."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-llm-data",
+          "url": "https://destiny.by/be/approach.html#faq-llm-data",
+          "name": "Як выкарыстоўваюцца AI-інструменты?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Яны дапамагаюць разбіраць матэрыялы і правяраць гіпотэзы. Спецыяліст пацвярджае знаходкі і ацэньвае ўплыў. Выкарыстанне знешніх мадэляў і перадачу даных праекта ўзгадняем да пачатку працы."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-retest",
+          "url": "https://destiny.by/be/approach.html#faq-retest",
+          "name": "Што ўваходзіць у рэтэст?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Паўторная праверка вядомых знаходак пасля выпраўленняў. Для кожнай фіксуем версію, умовы і статус. Новыя функцыі ацэньваем асобна."
+          }
+        },
+        {
+          "@type": "Question",
+          "@id": "https://destiny.by/be/approach.html#faq-limitations",
+          "url": "https://destiny.by/be/approach.html#faq-limitations",
+          "name": "Што азначае адсутнасць знаходак?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "У выбраным аб’ёме і праверанай версіі не ўдалося пацвердзіць уразлівасці. Гэта не гарантыя адсутнасці ўсіх памылак. У справаздачы пазначаем правераныя вобласці і абмежаванні."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/report-example.html#webpage",
+      "url": "https://destiny.by/be/report-example.html",
+      "name": "Прыклад справаздачы пра пентэст Web/API і AI — DESTINY",
+      "description": "Прыклад справаздачы пра пентэст: рызыкі, аб’ём праверкі, знаходкі Web/API і AI, доказы і рэкамендацыі. Усе сцэнарыі і даныя выдуманыя. PDF па-руску.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/report-example.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/report-example.html#report"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/report-example.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Прыклад справаздачы",
+          "item": "https://destiny.by/be/report-example.html"
+        }
+      ]
+    },
+    {
+      "@type": "Report",
+      "@id": "https://destiny.by/be/report-example.html#report",
+      "url": "https://destiny.by/be/report-example.html",
+      "name": "Дэманстрацыйная справаздача пра пентэст Web/API і AI",
+      "description": "Узор справаздачы Абодва сцэнарыі і ўсе даныя выдуманыя.",
+      "inLanguage": "be",
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://destiny.by/be/report-example.html#webpage"
+      },
+      "dateModified": "2026-11-06",
+      "encoding": {
+        "@type": "MediaObject",
+        "encodingFormat": "application/pdf",
+        "contentUrl": "https://destiny.by/assets/reports/destiny-pentest-report-example.pdf",
+        "inLanguage": "ru"
+      }
+    },
+    {
+      "@type": "ContactPage",
+      "@id": "https://destiny.by/be/contact.html#webpage",
+      "url": "https://destiny.by/be/contact.html",
+      "name": "Абмеркаваць пентэст і бяспеку AI — DESTINY",
+      "description": "Абмяркуйце пентэст Web, API, AI-сістэм або рэтэст выпраўленняў. Звяжыцеся з DESTINY праз LinkedIn або электронную пошту.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/contact.html#breadcrumb"
+      },
+      "mainEntity": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "relatedLink": "https://www.linkedin.com/in/vadimohka/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/contact.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Кантакты",
+          "item": "https://destiny.by/be/contact.html"
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://destiny.by/be/privacy.html#webpage",
+      "url": "https://destiny.by/be/privacy.html",
+      "name": "Даныя і канфідэнцыяльнасць — DESTINY",
+      "description": "Інфармацыя пра кантакты і канфідэнцыяльнасць: пераход у LinkedIn, зварот па электроннай пошце і даныя, якія вы перадаеце падчас перапіскі.",
+      "inLanguage": "be",
+      "isPartOf": {
+        "@id": "https://destiny.by/be/#website"
+      },
+      "publisher": {
+        "@id": "https://destiny.by/be/#organization"
+      },
+      "dateModified": "2026-11-06",
+      "breadcrumb": {
+        "@id": "https://destiny.by/be/privacy.html#breadcrumb"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://destiny.by/be/privacy.html#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Галоўная",
+          "item": "https://destiny.by/be/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Прыватнасць",
+          "item": "https://destiny.by/be/privacy.html"
+        }
+      ]
+    }
+  ]
+}

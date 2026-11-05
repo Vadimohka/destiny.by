@@ -33,27 +33,29 @@
   <link rel="stylesheet" href="/assets/styles.css?v=blackwall-9">
   <link rel="stylesheet" href="/assets/documents.css?v=multipage-8">
   <link rel="stylesheet" href="/assets/motion.css?v=motion-10">
-  <script src="/assets/site.js?v=direct-9" defer></script>
+  <script src="/assets/404-locale.js?v=be-1" defer></script>
+  <script src="/assets/site.js?v=be-1" defer></script>
+  <link rel="stylesheet" href="/assets/localization.css?v=be-1">
 </head>
 <body class="document-page error-page">
-  <a class="skip-link" href="#main">Перейти к содержимому</a>
+  <a class="skip-link" href="#main" data-be="Перайсці да зместу">Перейти к содержимому</a>
   <header class="site-header"><div class="container header-inner">
-    <a class="brand" href="/" aria-label="DESTINY — главная"><img src="/assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a>
-    <button class="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button>
-    <nav class="site-nav" id="site-nav" aria-label="Основная навигация"><a href="/#services">Услуги</a><a href="/approach.html">Как работаем</a><a href="/report-example.html">Пример отчёта</a><a class="nav-contact" href="/contact.html">Обсудить задачу</a></nav>
+    <a class="brand" href="/" aria-label="DESTINY — главная" data-be-label="DESTINY — галоўная" data-be-href="/be/"><img src="/assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a>
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация" data-be-label="Асноўная навігацыя"><a href="/#services" data-be="Паслугі" data-be-href="/be/#services">Услуги</a><a href="/approach.html" data-be="Як працуем" data-be-href="/be/approach.html">Как работаем</a><a href="/report-example.html" data-be="Прыклад справаздачы" data-be-href="/be/report-example.html">Пример отчёта</a><a class="nav-contact" href="/contact.html" data-be="Абмеркаваць задачу" data-be-href="/be/contact.html">Обсудить задачу</a></nav>
+    <div class="header-controls"><nav class="language-switcher" aria-label="Выбор языка" data-be-label="Выбар мовы"><a href="/404.html" lang="ru" hreflang="ru" aria-label="Русский" aria-current="page">РУС</a><a href="/be/404.html" lang="be" hreflang="be" aria-label="Беларуская">БЕЛ</a></nav><button class="menu-toggle" type="button" aria-label="Открыть меню" data-be-label="Адкрыць меню" aria-expanded="false" aria-controls="site-nav"><span></span><span></span></button></div>
   </div></header>
   <main class="container page-error" id="main">
     <div class="page-error-code" aria-hidden="true">404</div>
-    <div><p class="eyebrow"><span>Destiny</span> / Страница не найдена</p><h1>Здесь нет<br>нужной страницы.</h1><p class="page-lede">Возможно, адрес изменился или в ссылке появилась ошибка. Услуги, подход и примеры результата доступны на главной.</p><div class="page-actions"><a class="button" href="/">На главную</a><a class="text-link" href="/report-example.html">Пример отчёта <span aria-hidden="true">↗</span></a></div></div>
+    <div><p class="eyebrow" data-be="&lt;span&gt;Destiny&lt;/span&gt; / Старонка не знойдзена"><span>Destiny</span> / Страница не найдена</p><h1 data-be="Тут няма&lt;br&gt;патрэбнай старонкі.">Здесь нет<br>нужной страницы.</h1><p class="page-lede" data-be="Магчыма, адрас змяніўся ці ў спасылцы з’явілася памылка. Паслугі, падыход і прыклады выніку даступныя на галоўнай.">Возможно, адрес изменился или в ссылке появилась ошибка. Услуги, подход и примеры результата доступны на главной.</p><div class="page-actions"><a class="button" href="/" data-be="На галоўную" data-be-href="/be/">На главную</a><a class="text-link" href="/report-example.html" data-be="Прыклад справаздачы &lt;span aria-hidden=&quot;true&quot;&gt;↗&lt;/span&gt;" data-be-href="/be/report-example.html">Пример отчёта <span aria-hidden="true">↗</span></a></div></div>
   </main>
   <footer class="site-footer">
     <div class="container footer-top">
-      <div class="footer-brand"><a class="brand" href="/" aria-label="DESTINY — главная"><img src="/assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p>Пентест приложений,<br>API и AI-систем.</p></div>
-      <nav class="footer-group" aria-label="Услуги"><h2>Услуги</h2><a href="/web-pentest.html">Web-приложения</a><a href="/api-pentest.html">API и интеграции</a><a href="/ai-security.html">AI, RAG и агенты</a><a href="/retest.html">Релизы и ретест</a></nav>
-      <nav class="footer-group" aria-label="О проверке"><h2>О проверке</h2><a href="/approach.html">Как работаем</a><a href="/report-example.html">Пример отчёта</a><a href="/approach.html#questions">Вопросы и ответы</a><a href="/contact.html">Контакты</a></nav>
-      <div class="footer-action"><p>Обсудим<br>ваш продукт.</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
+      <div class="footer-brand"><a class="brand" href="/" aria-label="DESTINY — главная" data-be-label="DESTINY — галоўная" data-be-href="/be/"><img src="/assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p data-be="Пентэст прыкладанняў,&lt;br&gt;API і AI-сістэм.">Пентест приложений,<br>API и AI-систем.</p></div>
+      <nav class="footer-group" aria-label="Услуги" data-be-label="Паслугі"><h2 data-be="Паслугі">Услуги</h2><a href="/web-pentest.html" data-be="Вэб-прыкладанні" data-be-href="/be/web-pentest.html">Web-приложения</a><a href="/api-pentest.html" data-be="API і інтэграцыі" data-be-href="/be/api-pentest.html">API и интеграции</a><a href="/ai-security.html" data-be="AI, RAG і агенты" data-be-href="/be/ai-security.html">AI, RAG и агенты</a><a href="/retest.html" data-be="Рэлізы і рэтэст" data-be-href="/be/retest.html">Релизы и ретест</a></nav>
+      <nav class="footer-group" aria-label="О проверке" data-be-label="Пра праверку"><h2 data-be="Пра праверку">О проверке</h2><a href="/approach.html" data-be="Як працуем" data-be-href="/be/approach.html">Как работаем</a><a href="/report-example.html" data-be="Прыклад справаздачы" data-be-href="/be/report-example.html">Пример отчёта</a><a href="/approach.html#questions" data-be="Пытанні і адказы" data-be-href="/be/approach.html#questions">Вопросы и ответы</a><a href="/contact.html" data-be="Кантакты" data-be-href="/be/contact.html">Контакты</a></nav>
+      <div class="footer-action"><p data-be="Абмяркуем&lt;br&gt;ваш прадукт.">Обсудим<br>ваш продукт.</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
     </div>
-    <div class="container footer-bottom"><p>© <span id="copyright-year">2026</span> DESTINY</p><a href="/privacy.html">Конфиденциальность</a><a href="#main">Наверх <span aria-hidden="true">↑</span></a></div>
+    <div class="container footer-bottom"><p>© <span id="copyright-year">2026</span> DESTINY</p><a href="/privacy.html" data-be="Прыватнасць" data-be-href="/be/privacy.html">Конфиденциальность</a><a href="#main" data-be="Уверх &lt;span aria-hidden=&quot;true&quot;&gt;↑&lt;/span&gt;">Наверх <span aria-hidden="true">↑</span></a></div>
   </footer>
 </body>
 </html>

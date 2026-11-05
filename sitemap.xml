@@ -1,35 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://destiny.by/</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/" />
   </url>
   <url>
     <loc>https://destiny.by/web-pentest.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/web-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/web-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/web-pentest.html" />
   </url>
   <url>
     <loc>https://destiny.by/api-pentest.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/api-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/api-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/api-pentest.html" />
   </url>
   <url>
     <loc>https://destiny.by/ai-security.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/ai-security.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/ai-security.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/ai-security.html" />
   </url>
   <url>
     <loc>https://destiny.by/retest.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/retest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/retest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/retest.html" />
   </url>
   <url>
     <loc>https://destiny.by/approach.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/approach.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/approach.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/approach.html" />
   </url>
   <url>
     <loc>https://destiny.by/report-example.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/report-example.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/report-example.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/report-example.html" />
   </url>
   <url>
     <loc>https://destiny.by/contact.html</loc>
     <lastmod>2026-10-31</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/contact.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/contact.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/web-pentest.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/web-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/web-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/web-pentest.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/api-pentest.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/api-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/api-pentest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/api-pentest.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/ai-security.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/ai-security.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/ai-security.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/ai-security.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/retest.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/retest.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/retest.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/retest.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/approach.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/approach.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/approach.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/approach.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/report-example.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/report-example.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/report-example.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/report-example.html" />
+  </url>
+  <url>
+    <loc>https://destiny.by/be/contact.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://destiny.by/contact.html" />
+    <xhtml:link rel="alternate" hreflang="be" href="https://destiny.by/be/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://destiny.by/contact.html" />
   </url>
 </urlset>
