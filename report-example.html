@@ -23,12 +23,12 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="DESTINY — пентест Web, API и AI-систем. Найти брешь. До атаки.">
+  <meta property="og:image:alt" content="DESTINY — пентест Web, API и AI-систем — Найти брешь — До атаки">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Пример отчёта о пентесте Web/API и AI — DESTINY">
   <meta name="twitter:description" content="Пример отчёта о пентесте в PDF: сводка рисков, объём проверки, находки Web/API и AI, доказательства и рекомендации. Все сценарии и данные вымышлены.">
   <meta name="twitter:image" content="https://destiny.by/assets/social-card.png">
-  <meta name="twitter:image:alt" content="DESTINY — пентест Web, API и AI-систем. Найти брешь. До атаки.">
+  <meta name="twitter:image:alt" content="DESTINY — пентест Web, API и AI-систем — Найти брешь — До атаки">
   <link rel="describedby" href="https://destiny.by/llms.txt" type="text/plain">
   <link rel="describedby" href="https://destiny.by/ai.json" type="application/ld+json">
   <link rel="sitemap" href="https://destiny.by/sitemap.xml" type="application/xml">
@@ -168,7 +168,7 @@
         <div class="page-hero-copy">
           <nav class="page-breadcrumb" aria-label="Навигационная цепочка"><a href="./">Главная</a><span aria-hidden="true">/</span><span aria-current="page">Пример отчёта</span></nav>
       <p class="eyebrow"><span>Результат</span> / Из находки в задачу</p>
-      <h1 id="page-title">Пример отчёта<br><em>о пентесте.</em></h1>
+      <h1 id="page-title">Пример отчёта<br><em>о пентесте</em></h1>
       <p class="page-lede">Сводка для руководителя и техническая часть для разработчиков: уязвимости, последствия, доказательства и рекомендации по исправлению.</p>
       <div class="page-actions"><a class="button" href="assets/reports/destiny-pentest-report-example.pdf" download="DESTINY-report-example.pdf" type="application/pdf">Скачать отчёт PDF <span aria-hidden="true">↓</span></a><a class="button button-secondary" href="#executive-summary">Читать на сайте</a></div>
       <p class="report-file-meta">PDF · 7 страниц · A4</p>
@@ -182,7 +182,7 @@
       </aside>
       <div class="doc-content" id="report-content">
         <section class="doc-section" id="executive-summary" aria-labelledby="executive-title">
-          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>01</span> / Для руководителя</p><h2 id="executive-title">Сводка<br><em>рисков.</em></h2><p>Сводка переводит технические наблюдения в последствия для продукта и порядок действий. В этих примерах нарушаются две разные границы доверия.</p></div>
+          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>01</span> / Для руководителя</p><h2 id="executive-title">Сводка<br><em>рисков</em></h2><p>Сводка переводит технические наблюдения в последствия для продукта и порядок действий. В этих примерах нарушаются две разные границы доверия.</p></div>
           <div class="doc-executive">
             <article><p class="doc-label">Web / API · DEMO-01</p><h3>Данные одного клиента доступны другому</h3><p>Обычная учётная запись позволяет получить чужой документ. Первая задача — закрыть доступ на уровне объекта и проверить похожие операции в API.</p><a class="text-link" href="#web-example">Разобрать находку <span aria-hidden="true">↗</span></a></article>
             <article><p class="doc-label">AI / RAG · DEMO-02</p><h3>Документ управляет действием агента</h3><p>Внешняя инструкция приводит к запросу вне прав пользователя. Первая задача — обеспечить независимую проверку разрешений на стороне инструмента.</p><a class="text-link" href="#ai-example">Разобрать находку <span aria-hidden="true">↗</span></a></article>
@@ -191,11 +191,11 @@
         </section>
         <section class="doc-section" id="coverage" aria-labelledby="coverage-title">
           <div class="doc-section-header" data-reveal><p class="eyebrow"><span>02</span> / Границы результата</p><h2 id="coverage-title">Что входит в проверку</h2><p>Отчёт описывает проверенные системы, роли, операции и ограничения. По нему должно быть понятно, на какие области распространяются выводы.</p></div>
-          <div class="doc-table-wrap" role="region" aria-label="Области демонстрационного отчёта" tabindex="0"><table class="doc-table"><thead><tr><th scope="col">Область</th><th scope="col">Что рассматривается в образце</th><th scope="col">Что фиксируется в проекте</th></tr></thead><tbody><tr><td>Web / API</td><td>Доступ к документам между организациями.</td><td>Приложения, версии, роли, операции и тестовые учётные записи.</td></tr><tr><td>AI / RAG</td><td>Влияние внешнего документа на вызов инструмента.</td><td>Модель, источники знаний, инструменты и права пользователя.</td></tr><tr><td>Повторная проверка</td><td>Критерии подтверждения исправлений.</td><td>Версия после исправления, повторённые сценарии и итоговый статус.</td></tr><tr><td>За пределами образца</td><td>Сеть, облачная инфраструктура, социальная инженерия и нагрузка.</td><td>Исключения, недоступные компоненты и ограничения методов.</td></tr></tbody></table></div>
+          <div class="doc-table-wrap" role="region" aria-label="Области демонстрационного отчёта" tabindex="0"><table class="doc-table"><thead><tr><th scope="col">Область</th><th scope="col">Что рассматривается в образце</th><th scope="col">Что фиксируется в проекте</th></tr></thead><tbody><tr><td>Web / API</td><td>Доступ к документам между организациями</td><td>Приложения, версии, роли, операции и тестовые учётные записи</td></tr><tr><td>AI / RAG</td><td>Влияние внешнего документа на вызов инструмента</td><td>Модель, источники знаний, инструменты и права пользователя</td></tr><tr><td>Повторная проверка</td><td>Критерии подтверждения исправлений</td><td>Версия после исправления, повторённые сценарии и итоговый статус</td></tr><tr><td>За пределами образца</td><td>Сеть, облачная инфраструктура, социальная инженерия и нагрузка</td><td>Исключения, недоступные компоненты и ограничения методов</td></tr></tbody></table></div>
           <p class="doc-caption">Фактическое покрытие в рабочем отчёте отделяется от согласованного плана: недоступная функция или непроверенная роль остаются отмеченными как ограничения.</p>
         </section>
         <article class="doc-finding" id="web-example" aria-labelledby="web-finding-title">
-          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">Web / API · Разграничение доступа</p><span class="doc-finding-id">DEMO-01 / ОБРАЗЕЦ</span></div><h2 id="web-finding-title">Доступ к чужим<br>документам.</h2><p>Пользователь одной организации получает документ другой. Приложение проверяет вход в систему, но пропускает проверку права на конкретный объект.</p></header>
+          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">Web / API · Разграничение доступа</p><span class="doc-finding-id">DEMO-01 / ОБРАЗЕЦ</span></div><h2 id="web-finding-title">Доступ к чужим<br>документам</h2><p>Пользователь одной организации получает документ другой. Приложение проверяет вход в систему, но пропускает проверку права на конкретный объект.</p></header>
           <dl class="doc-metadata"><div><dt>Условная система</dt><dd>app.example</dd></div><div><dt>Исходный доступ</dt><dd>Обычная учётная запись</dd></div><div><dt>Нарушенная граница</dt><dd>Изоляция организаций</dd></div></dl>
           <div class="doc-finding-body">
             <section class="doc-finding-section" aria-labelledby="web-impact-title"><h3 id="web-impact-title">Влияние на бизнес</h3><p>Ошибка создаёт путь к клиентским документам за пределами разрешений. Возможный ущерб зависит от чувствительности документов, доступных операций и количества объектов. Возможность чтения сама по себе не доказывает возможность изменения или удаления — эти действия проверяются отдельно.</p></section>
@@ -207,7 +207,7 @@
           </div>
         </article>
         <article class="doc-finding" id="ai-example" aria-labelledby="ai-finding-title">
-          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">AI / RAG · Права инструментов</p><span class="doc-finding-id">DEMO-02 / ОБРАЗЕЦ</span></div><h2 id="ai-finding-title">Подмена инструкций<br>и права агента.</h2><p>Документ из базы знаний меняет поведение агента. Инструмент принимает сформированный агентом запрос без независимой проверки прав пользователя.</p></header>
+          <header class="doc-finding-head"><div class="doc-finding-meta"><p class="doc-label">AI / RAG · Права инструментов</p><span class="doc-finding-id">DEMO-02 / ОБРАЗЕЦ</span></div><h2 id="ai-finding-title">Подмена инструкций<br>и права агента</h2><p>Документ из базы знаний меняет поведение агента. Инструмент принимает сформированный агентом запрос без независимой проверки прав пользователя.</p></header>
           <dl class="doc-metadata"><div><dt>Условная система</dt><dd>assistant.example</dd></div><div><dt>Исходный доступ</dt><dd>Чтение данных своей команды</dd></div><div><dt>Нарушенная граница</dt><dd>Источник знаний → действие</dd></div></dl>
           <div class="doc-finding-body">
             <section class="doc-finding-section" aria-labelledby="ai-impact-title"><h3 id="ai-impact-title">Влияние на бизнес</h3><p>Недоверенный источник может стать причиной действия вне разрешений: запроса чужих данных или изменения объекта. В образце зафиксировано принятие неразрешённого запроса тестовым инструментом. Фактический экспорт и передача данных не моделируются.</p></section>
@@ -223,7 +223,7 @@
           <dl class="doc-statuses"><div><dt>Исправлено</dt><dd>Сценарий больше не воспроизводится, согласованные связанные проверки пройдены. Указаны условия и границы вывода.</dd></div><div><dt>Исправлено частично</dt><dd>Часть пути закрыта, но остаётся вариант воспроизведения или непокрытая часть согласованного исправления.</dd></div><div><dt>Воспроизводится</dt><dd>После изменений нарушение сохраняется. Приведено актуальное доказательство на новой версии.</dd></div><div><dt>Не удалось проверить</dt><dd>Нет необходимого доступа, компонента или условия. Указана причина; такой статус не означает исправление.</dd></div></dl>
         </section>
         <section class="doc-section" id="handover" aria-labelledby="handover-title">
-          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>06</span> / Для работы команды</p><h2 id="handover-title">Что получает<br><em>команда.</em></h2></div>
+          <div class="doc-section-header" data-reveal><p class="eyebrow"><span>06</span> / Для работы команды</p><h2 id="handover-title">Что получает<br><em>команда</em></h2></div>
           <ol class="doc-deliverables"><li><div><h3>Сводка для принятия решений</h3><p>Основные риски, приоритет исправлений и ограничения проверки. Основа для решения о выпуске, сроках и распределении ресурсов.</p></div></li><li><div><h3>Находки для разработки</h3><p>Идентификатор, затронутая область, условия, доказательства, влияние, рекомендации и критерии приёмки исправления.</p></div></li><li><div><h3>Карта покрытия</h3><p>Проверенные системы, роли и сценарии. Недоступные участки и исключения видны отдельно от выполненных работ.</p></div></li><li><div><h3>Обновление после ретеста</h3><p>Связь каждого повторного наблюдения с исходной находкой, версией исправления и итоговым статусом.</p></div></li></ol>
         </section>
         <section class="page-cta" data-reveal aria-labelledby="report-cta-title"><div><h2 id="report-cta-title">Обсудим вашу систему</h2><p>Опишите продукт и критичные операции. Определим, какие проверки дадут вашей команде полезный результат.</p></div><div class="report-cta-actions"><a class="button" href="contact.html">Обсудить проверку</a><a class="text-link" href="assets/reports/destiny-pentest-report-example.pdf" download="DESTINY-report-example.pdf" type="application/pdf">Скачать отчёт PDF <span aria-hidden="true">↓</span></a></div></section>
@@ -232,10 +232,10 @@
   </main>
   <footer class="site-footer">
     <div class="container footer-top">
-      <div class="footer-brand"><a class="brand" href="./" aria-label="DESTINY — главная"><img src="assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p>Пентест приложений,<br>API и AI-систем.</p></div>
+      <div class="footer-brand"><a class="brand" href="./" aria-label="DESTINY — главная"><img src="assets/destiny-wordmark.svg?v=blackwall-4" width="250" height="42" alt="DESTINY"></a><p>Пентест приложений,<br>API и AI-систем</p></div>
       <nav class="footer-group" aria-label="Услуги"><h2>Услуги</h2><a href="web-pentest.html">Web-приложения</a><a href="api-pentest.html">API и интеграции</a><a href="ai-security.html">AI, RAG и агенты</a><a href="retest.html">Релизы и ретест</a></nav>
       <nav class="footer-group" aria-label="О проверке"><h2>О проверке</h2><a href="approach.html">Как работаем</a><a href="report-example.html">Пример отчёта</a><a href="approach.html#questions">Вопросы и ответы</a><a href="contact.html">Контакты</a></nav>
-      <div class="footer-action"><p>Обсудим<br>ваш продукт.</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
+      <div class="footer-action"><p>Обсудим<br>ваш продукт</p><div class="footer-contact-links"><a class="text-link footer-linkedin" href="https://www.linkedin.com/in/vadimohka/" target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a><a class="text-link footer-email" href="mailto:security@destiny.by">security@destiny.by <span aria-hidden="true">↗</span></a></div></div>
     </div>
     <div class="container footer-bottom"><p>© <span id="copyright-year">2026</span> DESTINY</p><a href="privacy.html">Конфиденциальность</a><a href="#main">Наверх <span aria-hidden="true">↑</span></a></div>
   </footer>

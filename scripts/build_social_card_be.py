@@ -76,9 +76,10 @@ def build_svg() -> Path:
         TTFont(ROOT / "assets/fonts/onest-variable.ttf"), {"wght": 400}, inplace=True
     )
     lines = [
-        ("translate(63 257)", "ЗНАЙСЦІ ПРАЛОМ.", oswald, 63, 257, 83, 520),
-        ("translate(63 351)", "ДА АТАКІ.", oswald, 63, 351, 83, None),
-        ("translate(65 414)", "Пентэст Web, API і AI-сістэм.", onest, 65, 414, 20, None),
+        # Retain the established first-line size when removing its final full stop.
+        ("translate(63 257)", "ЗНАЙСЦІ ПРАЛОМ", oswald, 63, 257, 66.6324962, 520),
+        ("translate(63 351)", "ДА АТАКІ", oswald, 63, 351, 83, None),
+        ("translate(65 414)", "Пентэст Web, API і AI-сістэм", onest, 65, 414, 20, None),
     ]
     for transform, text, font, x, y, font_size, max_width in lines:
         matches = [
@@ -99,9 +100,9 @@ def build_svg() -> Path:
     svg.set("aria-labelledby", "social-card-title social-card-description")
     svg.set("{http://www.w3.org/XML/1998/namespace}lang", "be")
     title = ET.Element(f"{{{SVG_NS}}}title", {"id": "social-card-title"})
-    title.text = "DESTINY — пентэст Web, API і AI-сістэм."
+    title.text = "DESTINY — пентэст Web, API і AI-сістэм"
     description = ET.Element(f"{{{SVG_NS}}}desc", {"id": "social-card-description"})
-    description.text = "Знайсці пралом. Да атакі."
+    description.text = "Знайсці пралом — Да атакі"
     svg.insert(0, title)
     svg.insert(1, description)
 
