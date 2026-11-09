@@ -101,8 +101,9 @@
       "kind": "privacy",
       "title": "Даныя і канфідэнцыяльнасць — DESTINY",
       "description": "Інфармацыя пра кантакты і канфідэнцыяльнасць: пераход у LinkedIn, зварот па электроннай пошце і даныя, якія вы перадаеце падчас перапіскі.",
-      "indexable": false,
-      "updated": "2026-11-06"
+      "indexable": true,
+      "updated": "2026-11-06",
+      "markdown": "be/privacy.md"
     },
     {
       "file": "be/404.html",

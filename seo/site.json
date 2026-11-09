@@ -106,8 +106,9 @@
       "kind": "privacy",
       "title": "Данные и конфиденциальность — DESTINY",
       "description": "Информация о контактах и конфиденциальности: переход в LinkedIn, обращение по электронной почте и данные, которые вы передаёте при переписке.",
-      "indexable": false,
-      "updated": "2026-10-31"
+      "indexable": true,
+      "updated": "2026-10-31",
+      "markdown": "privacy.md"
     },
     {
       "file": "404.html",

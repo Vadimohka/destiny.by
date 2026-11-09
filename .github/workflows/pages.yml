@@ -1,6 +1,9 @@
 name: Deploy Destiny to GitHub Pages
 
 on:
+  pull_request:
+    branches:
+      - main
   push:
     branches:
       - main
@@ -8,17 +11,39 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Validate metadata and discovery files
+        run: python3 scripts/build_discovery.py --check
+
+      - name: Test indexing safeguards
+        run: python3 -m unittest discover -s scripts -p 'test_*.py'
+
+      - name: Validate IndexNow URL list without submitting
+        run: python3 scripts/notify_indexnow.py --dry-run
+
   deploy:
+    needs: validate
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -31,9 +56,6 @@ jobs:
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-
-      - name: Validate metadata and discovery files
-        run: python3 scripts/build_discovery.py --check
 
       - name: Prepare public site
         shell: bash
@@ -70,6 +92,10 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify public indexing after deployment
+        timeout-minutes: 4
+        run: python3 scripts/check_public_site.py
 
       - name: Notify IndexNow
         if: ${{ steps.deployment.outcome == 'success' }}
