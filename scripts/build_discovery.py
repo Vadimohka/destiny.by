@@ -667,6 +667,17 @@ def validate(config, outputs, page_graphs, configs):
             matches = [n for n in metadata if n.attrs.get("name") == key]
             if len(matches) != 1 or matches[0].attrs.get("content") != expected:
                 errors.append(f"{filename}: invalid {key}")
+        if page["indexable"]:
+            crawler_names = {"robots", "googlebot", "googlebot-news", "googlebot-image", "bingbot",
+                             "yandex", "baiduspider", "duckduckbot", "gptbot", "claudebot", "google-extended"}
+            crawler_names.update(bot.lower() for bot in config["searchBots"] + config["userFetchers"])
+            for node in metadata:
+                name = (node.attrs.get("name") or "").lower()
+                directives = set(re.split(r"[\s,]+", (node.attrs.get("content") or "").lower()))
+                if name in crawler_names and directives & {"noindex", "none"}:
+                    errors.append(f"{filename}: {name} meta tag blocks indexing")
+                if (node.attrs.get("http-equiv") or "").lower() == "refresh":
+                    errors.append(f"{filename}: indexable canonical pages must not use meta refresh")
         canonical = [n.attrs.get("href") for n in document.all("link") if n.attrs.get("rel") == "canonical"]
         if canonical != ([] if page["kind"] == "error" else [url]):
             errors.append(f"{filename}: invalid canonical")
